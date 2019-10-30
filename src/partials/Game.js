@@ -13,7 +13,7 @@ export default class Game {
 
   }
 
-  render() {
+  render(dt) {
     while (this.gameElement.hasChildNodes()) {
       this.gameElement.removeChild(this.gameElement.lastChild);
     }
