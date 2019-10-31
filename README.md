@@ -42,40 +42,49 @@ Now check out your deployed site 🙂
 
 
 # VERSION HISTORY
+
+## alpha 7:
+
+    problems:
+        *didnt have time before i left class to finsish troubleshooting my pause function...
+
+    Game.js
+        *started working on the pause functuon...
+
 ## alpha 6:
 
     Ball.js
-        *... i was over thinking it. re-read the slides and realised i only needed to multiply my vars by -1.....
-        *adds bounce on all 4 sides
-        *renamed collison method to fit with what the project slides wanted me to name it.
+        *... i was over thinking it. re-read the slides and realised i only needed to multiply my vars by -1...
+        *adds bounce on all 4 sides...
+        *renamed collison method to fit with what the project slides wanted me to name it...
 
 ## alpha 5:
     
     Problem:
-        I cant get the horizontal bounce to work for some reason. been at it for a while so it's time for another git push regardless. Want to figure this out before school tonight.
+        *I cant get the horizontal bounce to work for some reason. been at it for a while so it's time for another git push regardless. Want to figure this out before school tonight...
     Ball.js
-        *added movement and verticle bounce to ball
+        *added movement and verticle bounce to ball...
 
 ## alpha 4:
     
     Ball.js:
-        *added the ball.js and rendered the svg
+        *added the ball.js and rendered the svg...
 
 ## alpha 3:
     
     Problems:
-        *a & z doesnt control player 2's paddle yet
+        *a & z doesnt control player 2's paddle yet...
     Paddles.js
-        *defined the paddle class
-        *added event listeners for keypresses and added movement based on the button pressed.
+        *defined the paddle class...
+        *added event listeners for keypresses and added movement based on the button pressed...
 
 ## alpha 2:
 
     Game.js & Board.js:
-        *Thank goodness for Anvit!! When importing a variable you need to enclose the var name in {}
+        *Thank goodness for Anvit!! When importing a variable you need to enclose the var name in {}...
     
     Game.js:
-        *Was showed a quicker way of refreshing my "canvas" by setting the innerHTML of the this.game as ""
+        *Was showed a quicker way of refreshing my "canvas" by setting the innerHTML of the this.game as ""...
 
 ## alpha 1:
     
@@ -91,9 +100,9 @@ Now check out your deployed site 🙂
                 
     Board.js:
         *added version history to readme so I'm not adding version noaazazazazazaztes to my git upload anymore...
-        *realised I didnt add rect as my render argument in board so i fixed that
-        *when setting my rect width and height attributes I forgot to change the selected element to rect from svg after copying those line over from my game.js...
+        *realised I didnt add rect as my render argument in board so i fixed that...
+        *when setting my rect width and height attributes I forgot to change the selected element to rect from svg after copying those line over from my... game.js...
         *added append child to the bottom of my rect element so I will amend my svg element with a rect child element...
 
     Game.js
-        *added dt as an argument in render()
+        *added dt as an argument in render()...
