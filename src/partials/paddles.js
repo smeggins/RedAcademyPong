@@ -2,7 +2,7 @@ import { SVG_NS } from "../settings"
 import { KEYS } from "../settings"
 
 export default class Paddles {
-    constructor (boardHeight, width, height, x, y, up, down, a, z) {
+    constructor (boardHeight, width, height, x, y, up, down) {
         this.boardHeight = boardHeight;
         this.width = width;
         this.height = height;
@@ -15,14 +15,6 @@ export default class Paddles {
                     this.y = Math.max(this.y - KEYS.speed, 0);
                     break;
                 case down:
-                    this.y = Math.min(this.y + KEYS.speed, this.boardHeight - this.height); 
-                    break;
-                case a:
-                    console.log('a pressed');
-                    this.y = Math.max(this.y - KEYS.speed, 0);
-                    break;
-                case z:
-                    console.log('z pressed');
                     this.y = Math.min(this.y + KEYS.speed, this.boardHeight - this.height); 
                     break;
             }

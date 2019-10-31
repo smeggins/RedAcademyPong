@@ -42,37 +42,43 @@ Now check out your deployed site 🙂
 
 
 # VERSION HISTORY
-alpha 3:
-    Problems:
+## alpha 4:
+    ### ball.js:
+        *added the ball.js and rendered the svg
+
+## alpha 3:
+    
+    ### Problems:
         *a & z doesnt control player 2's paddle yet
-    Paddles.js
+    ### Paddles.js
         *defined the paddle class
         *added event listeners for keypresses and added movement based on the button pressed.
 
-alpha 2:
+## alpha 2:
 
-    Game.js & Board.js:
+    ### Game.js & Board.js:
         *Thank goodness for Anvit!! When importing a variable you need to enclose the var name in {}
     
-    Game.js:
+    ### Game.js:
         *Was showed a quicker way of refreshing my "canvas" by setting the innerHTML of the this.game as ""
 
-alpha 1:
-    Problems:
+## alpha 1:
+    
+    ### Problems:
         *I still can't get the board to draw. but i see PONG and if I un-comment my svg in HTML it shows up...
         *it must either be a problem with my loop or i'm completely out to lunch with my board code...
         *The loop code worked in my "canvas" pong project.... dt only matters for moving objects so that part of the code shouldn't matter...
         *This is driving me bananas. I feel confident in my board code and I really hope that confidence is not missplaced...
         *ok I have to stop stalling by adding to this version history and start actually troubleshooting...
 
-    index.js
+    ### index.js
         *Removed some of the element references from my original "canvas" pong project...
                 
-    Board.js:
-        *added version history to readme so I'm not adding version notes to my git upload anymore...
+    ### Board.js:
+        *added version history to readme so I'm not adding version noaazazazazazaztes to my git upload anymore...
         *realised I didnt add rect as my render argument in board so i fixed that
         *when setting my rect width and height attributes I forgot to change the selected element to rect from svg after copying those line over from my game.js...
         *added append child to the bottom of my rect element so I will amend my svg element with a rect child element...
 
-    Game.js
+    ### Game.js
         *added dt as an argument in render()

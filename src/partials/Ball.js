@@ -1,18 +1,28 @@
-import SVG_NS from "../settings"
+import { SVG_NS } from "../settings"
 
 export default class Ball {
-    constructor (width, height) {
-        this.width = width
-        this.height = height
+    constructor (radius, boardWidth, boardHeight) {
+        this.radius = radius;
+        this.boardWidth = boardWidth;
+        this.boardHeight = boardHeight;
+        this.direction = 1;
+        this.x = (this.boardWidth / 2) - (this.radius / 2);
+        this.y = this.boardHeight / 2;
     }
 
-    render() {
+    render(svg) {
         
-				// <rect width="512" height="256" fill="#353535" stroke="black" stroke-width="5" />
-     let rect = document.createElementNS(SVG_NS, "rect")
+        // <circle cx="252" cy="124" r="8"/>
+     let circle = document.createElementNS(SVG_NS, "circle");
+     circle.setAttributeNS(null, "cx", this.x);
+     circle.setAttributeNS(null, "cy", this.y);
+     circle.setAttributeNS(null, "r", this.radius);
+     circle.setAttributeNS(null, "fill", "black");
+     svg.appendChild(circle);
+    }
 
-                
-				// <line x1="251" y1="0" x2="251" y2="256" stroke="black" stroke-width="5" stroke-dasharray="15" />
-     let line = document.createElementNS(SVG_NS, "line")
+    reset() {
+        this.x = (this.boardWidth / 2) - (this.radius / 2);
+        this.y = this.boardHeight / 2;
     }
 };
