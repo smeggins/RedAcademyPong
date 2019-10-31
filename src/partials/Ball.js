@@ -15,11 +15,11 @@ export default class Ball {
         this.y = this.boardHeight / 2;
 
 
-        this.vy = Math.floor(Math.random() * 10 - 5);
+        this.vy = Math.floor((Math.random() * 10 - 5) + 1);
         this.vx = this.direction * (6 - Math.abs(this.vy));
     }
 
-    collisionDetection() {
+    wallCollision() {
         this.topDetect = this.y - (this.radius / 2);
         this.bottomDetect = this.y + (this.radius / 2);
         this.leftDetect = this.x - (this.radius / 2);
@@ -27,16 +27,16 @@ export default class Ball {
         console.log(this.boardWidth)
 
         if (this.topDetect <= 0) {
-            this.vy = -this.vy;
+            this.vy *= -1;
         }
         else if (this.bottomDetect >= this.boardHeight) {
-            this.vy = -this.vy
+            this.vy *= -1
         }
-        // else if (this.leftDetect <= 0) {
-        //     this.direction = -1
-        // }
+        else if (this.leftDetect <= 0) {
+            this.vx *= -1
+        }
         else if (this.rightDetect >= this.boardWidth) {
-            this.direction = -1
+            this.vx *= -1
         }
     }
         
@@ -47,7 +47,7 @@ export default class Ball {
         this.x += this.vx;
         this.y += this.vy;
 
-        this.collisionDetection(player1, player2)
+        this.wallCollision(player1, player2)
 
         // <circle cx="252" cy="124" r="8"/>
      let circle = document.createElementNS(SVG_NS, "circle");

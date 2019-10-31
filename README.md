@@ -42,6 +42,13 @@ Now check out your deployed site 🙂
 
 
 # VERSION HISTORY
+## alpha 6:
+
+    Ball.js
+        *... i was over thinking it. re-read the slides and realised i only needed to multiply my vars by -1.....
+        *adds bounce on all 4 sides
+        *renamed collison method to fit with what the project slides wanted me to name it.
+
 ## alpha 5:
     
     Problem:
