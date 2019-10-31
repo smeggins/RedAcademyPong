@@ -42,6 +42,13 @@ Now check out your deployed site 🙂
 
 
 # VERSION HISTORY
+alpha 3:
+    Problems:
+        *a & z doesnt control player 2's paddle yet
+    Paddles.js
+        *defined the paddle class
+        *added event listeners for keypresses and added movement based on the button pressed.
+
 alpha 2:
 
     Game.js & Board.js:
