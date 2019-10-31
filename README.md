@@ -42,6 +42,14 @@ Now check out your deployed site 🙂
 
 
 # VERSION HISTORY
+alpha 2:
+
+    Game.js & Board.js:
+        *Thank goodness for Anvit!! When importing a variable you need to enclose the var name in {}
+    
+    Game.js:
+        *Was showed a quicker way of refreshing my "canvas" by setting the innerHTML of the this.game as ""
+
 alpha 1:
     Problems:
         *I still can't get the board to draw. but i see PONG and if I un-comment my svg in HTML it shows up...
