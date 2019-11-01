@@ -63,14 +63,13 @@ export default class Game {
     this.player2.render(svg);
     this.ball.render(svg, this.player1, this.player2);
     }  
-    else (alert('paused'))
+    else {console.log('paused')}
   };
 
   pause() {
-    let space = event.key;
-    document.addEventListener('keydown', function(event) {
-      console.log('this.paused ')
-      if (space == 'space') {
+    document.addEventListener("keydown", event => {
+      console.log(this.paused, event)
+      if (event.code == 'Space') {
         this.paused *= -1;
       }
     })

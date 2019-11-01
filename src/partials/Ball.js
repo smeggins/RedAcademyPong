@@ -24,7 +24,6 @@ export default class Ball {
         this.bottomDetect = this.y + (this.radius / 2);
         this.leftDetect = this.x - (this.radius / 2);
         this.rightDetect = this.x + (this.radius / 2);
-        console.log(this.boardWidth)
 
         if (this.topDetect <= 0) {
             this.vy *= -1;

@@ -43,6 +43,11 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## alpha 8:
+
+    game.js:
+        *fixed the pause function so that it now works
+
 ## alpha 7:
 
     problems:
