@@ -4,6 +4,7 @@ import Paddles from './paddles';
 import { KEYS } from '../settings';
 import Ball from './Ball';
 import { Variables } from '../settings';
+import Score from './score';
 
 export default class Game {
   constructor(element, width, height) {
@@ -44,8 +45,15 @@ export default class Game {
       this.up,
       this.down);
 
-    this.radius = Variables.ballSize; 
+    this.radius = Variables.ballSize, 
     this.ball = new Ball (this.radius, this.width, this.height);
+
+
+    this.scoreWidth = 128,
+    this.scoreHeight = 20,
+    this.scoreX = 192,
+    this.scoreY = 5,
+    this.scoreBoard = new Score (this.scoreX, this.scoreY, this.scoreWidth, this.scoreHeight);
 
 
   }
@@ -61,6 +69,7 @@ export default class Game {
     this.board.render(svg);
     this.player1.render(svg);
     this.player2.render(svg);
+    this.scoreBoard.render(svg);
     this.ball.render(svg, this.player1, this.player2,);
     }  
     // else {alert('paused')}
