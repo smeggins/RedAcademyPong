@@ -20,10 +20,10 @@ export default class Ball {
     }
 
     wallCollision() {
-        this.topDetect = this.y - (this.radius / 2);
-        this.bottomDetect = this.y + (this.radius / 2);
-        this.leftDetect = this.x - (this.radius / 2);
-        this.rightDetect = this.x + (this.radius / 2);
+        this.topDetect = this.y - (this.radius);
+        this.bottomDetect = this.y + (this.radius);
+        this.leftDetect = this.x - (this.radius);
+        this.rightDetect = this.x + (this.radius);
 
         if (this.topDetect <= 0) {
             this.vy *= -1;
@@ -38,6 +38,24 @@ export default class Ball {
             this.vx *= -1
         }
     }
+
+    paddleCollision(player1, player2) {
+        this.p2BottomY = player2.y + player2.height;
+        this.p1BottomY = player1.y + player1.height;
+        this.p1PaddleX = player1.x + player1.width;
+
+        if (this.rightDetect >= player2.x && (this.y || this.topDetect || this.bottomDetect) >= player2.y && (this.y || this.bottomDetect || this.topDetect) <= this.p2BottomY ){
+            this.vx *= -1;
+        }
+
+        else if (this.leftDetect <= player1.x && (this.y || this.topDetect || this.bottomDetect) >= player1.y && (this.y || this.bottomDetect || this.topDetect) <= this.p1BottomY ){
+            this.vx *= -1;
+        }
+    }
+
+    troubleshoot(player1, player2) {
+        console.log(`ball topy: ${this.topDetect}, bottomy: ${this.bottomDetect}, leftx: ${this.leftDetect} rightx ${this.rightDetect}. Player 2 paddle topy: ${player1.y}, bottom y: ${this.p1BottomY} x: ${player1.x, this.p1PaddleX}`);
+    }
         
     
 
@@ -46,7 +64,9 @@ export default class Ball {
         this.x += this.vx;
         this.y += this.vy;
 
-        this.wallCollision(player1, player2)
+        this.wallCollision(player1, player2);
+        this.paddleCollision(player1, player2);
+        this.troubleshoot(player1, player2)
 
         // <circle cx="252" cy="124" r="8"/>
      let circle = document.createElementNS(SVG_NS, "circle");

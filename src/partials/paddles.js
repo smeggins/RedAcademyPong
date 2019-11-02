@@ -8,6 +8,9 @@ export default class Paddles {
         this.height = height;
         this.x = x;
         this.y = y;
+        this.paddleX = this.x + this.width;
+        this.bottomY = this.y + this.height;
+        
         this.score = 0;
         document.addEventListener("keydown", event => {
             switch (event.key) {
@@ -20,7 +23,7 @@ export default class Paddles {
             }
         });
     }
-
+    
     render(svg) {
         
         // <rect x="10" y="100" width="8" height="56" fill="black" />

@@ -43,6 +43,15 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## alpha 9:
+    ball.js
+        *added paddle collision
+        *added troubleshoot method
+
+    paddles.js
+        *cleaned up some unused vars
+    
+
 ## alpha 8:
 
     game.js:

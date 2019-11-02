@@ -32,8 +32,8 @@ export default class Game {
       this.paddleHeight, 
       this.boardGap, 
       ((this.height - this.paddleHeight) / 2),
-      this.up,
-      this.down);
+      this.a,
+      this.z);
 
     this.player2 = new Paddles (
       this.height, 
@@ -41,8 +41,8 @@ export default class Game {
       this.paddleHeight, 
       ((this.width - this.boardGap) - this.paddleWidth), 
       ((this.height - this.paddleHeight) / 2),
-      this.a,
-      this.z);
+      this.up,
+      this.down);
 
     this.radius = Variables.ballSize; 
     this.ball = new Ball (this.radius, this.width, this.height);
@@ -61,9 +61,9 @@ export default class Game {
     this.board.render(svg);
     this.player1.render(svg);
     this.player2.render(svg);
-    this.ball.render(svg, this.player1, this.player2);
+    this.ball.render(svg, this.player1, this.player2,);
     }  
-    else {console.log('paused')}
+    // else {alert('paused')}
   };
 
   pause() {
