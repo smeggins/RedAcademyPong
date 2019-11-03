@@ -85,3 +85,13 @@ h1 {
   text-align: center;
 }
 
+.scoreText {
+  display: block;
+  position: absolute;
+  top: 35%;
+  left: 43%;
+
+
+
+}
+

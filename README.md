@@ -43,7 +43,22 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## alpha 10
+
+    Note: skipped a couple git pushes on this readme due to time constraints while coding on the plane.
+
+    Problem:
+        *css won't apply to my score <p> element even though it is properlly generated and identified
+
+    Score.js:
+        *added the basic skeleton for the score.js
+        *adds container for score text
+
+    game.css
+        *added style for test score text
+
 ## alpha 9:
+    
     ball.js
         *added paddle collision
         *added troubleshoot method
