@@ -12,11 +12,13 @@ export default class Score {
     }
     
     render(svg) {
-        let game = document.getElementById('game')
-        let scoreText = document.createElement('p')
-        scoreText.innerHTML = 'this is a test';
-        scoreText.setAttribute('id', 'scoreText');
-        game.appendChild(scoreText)
+        // let game = document.getElementById('game')
+        // let scoreText = document.createElement('p')
+        // scoreText.innerHTML = 'this is a test';
+        // scoreText.setAttribute('id', 'scoreText');
+        // game.appendChild(scoreText)
+
+
         
         
         // <rect x="10" y="100" width="8" height="56" fill="black" />
@@ -28,5 +30,13 @@ export default class Score {
         score.setAttributeNS(null, 'fill', 'white');
         score.setAttributeNS(null, 'border', '1px solid black');
         svg.appendChild(score);
+
+        let text = document.createElementNS(SVG_NS, "text");
+        text.setAttributeNS(null, "x", this.x);
+        text.setAttributeNS(null, "y", this.y + 15);
+        text.setAttributeNS(null, "fill", 'red');
+
+        text.innerHTML = 'this is a test'
+        svg.appendChild(text);
     };
   }

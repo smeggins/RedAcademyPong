@@ -43,34 +43,39 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## alpha 11
+
+    score.js
+        *abandoned the previous text generation for now. ended up changing to svg text..
+
 ## alpha 10
 
-    Note: skipped a couple git pushes on this readme due to time constraints while coding on the plane.
+    Note: skipped a couple git pushes on this readme due to time constraints while coding on the plane...
 
     Problem:
-        *css won't apply to my score <p> element even though it is properlly generated and identified
+        *css won't apply to my score <p> element even though it is properlly generated and identified...
 
     Score.js:
-        *added the basic skeleton for the score.js
-        *adds container for score text
+        *added the basic skeleton for the score.js...
+        *adds container for score text...
 
     game.css
-        *added style for test score text
+        *added style for test score text...
 
 ## alpha 9:
     
     ball.js
-        *added paddle collision
-        *added troubleshoot method
+        *added paddle collision...
+        *added troubleshoot method...
 
     paddles.js
-        *cleaned up some unused vars
+        *cleaned up some unused vars...
     
 
 ## alpha 8:
 
     game.js:
-        *fixed the pause function so that it now works
+        *fixed the pause function so that it now works...
 
 ## alpha 7:
 
