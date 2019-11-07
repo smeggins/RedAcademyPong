@@ -13,7 +13,8 @@ export default class Game {
     this.height = height;
     this.gameElement = document.getElementById ('game');
     this.paused = 1;
-    this.pause()
+    this.pause();
+    this.reset();
 
     this.board = new Board (this.width, this.height);
 
@@ -80,6 +81,15 @@ export default class Game {
       console.log(this.paused, event)
       if (event.code == 'Space') {
         this.paused *= -1;
+      }
+    })
+  }
+
+  reset() {
+    document.addEventListener("keydown", event => {
+      console.log('reset function being accessed')
+      if (event.key == 'r') {
+        this.ball.reset()
       }
     })
   }

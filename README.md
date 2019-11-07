@@ -43,6 +43,56 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.0
+    Goals:
+        Front-End
+            Menus:
+                *Start menu
+                    -start 
+                        -number of goals to victory
+                        -check-box for tutorial
+                    -exit
+                    -options
+                
+                *Pause menu
+                    -resume
+                    -exit to title
+                    -options
+                    -resart match
+                        
+                        *Options menu
+                            -difficulty (when AI implemented)
+                            -sound volume
+                            -game speed
+                            -number of goals to victory
+                            -paddle color selection
+                            -ball color selection
+                            -screen size
+            
+            Visuals
+                *different paddle colors for each player
+                *different ball colors
+                *Game window border
+                *dedicated score area
+                */* perhaps glass wall on each side that cracks as ball hits then falls along with paddle when 
+                    a player wins...
+
+        Back-End:
+
+            Debug mode:
+                *display in top left of screen
+                    -paddle positions
+                    -ball position
+                    -ball speed
+                    -viewport size
+                    -keys depressed
+            
+            *Game size Scaleable
+            *code clean-up
+            *add audio
+
+
+
 ## alpha 12
 
     ball.js

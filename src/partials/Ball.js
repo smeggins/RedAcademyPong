@@ -18,8 +18,10 @@ export default class Ball {
         this.y = this.boardHeight / 2;
 
 
-        this.vy = Math.floor((Math.random() * 10 - 5) + 1);
+        this.vy = Math.floor(Math.random() * (10 - 5) + 1);
         this.vx = this.direction * (6 - Math.abs(this.vy));
+
+        console.log('reset pressed')
     }
 
     wallCollision() {
@@ -73,7 +75,7 @@ export default class Ball {
 
         this.wallCollision(player1, player2);
         this.paddleCollision(player1, player2);
-        this.troubleshoot(player1, player2)
+        // this.troubleshoot(player1, player2)
 
         // <circle cx="252" cy="124" r="8"/>
      let circle = document.createElementNS(SVG_NS, "circle");
