@@ -69,7 +69,7 @@ export default class Game {
     this.board.render(svg);
     this.player1.render(svg);
     this.player2.render(svg);
-    this.scoreBoard.render(svg);
+    this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
     this.ball.render(svg, this.player1, this.player2,);
     }  
     // else {alert('paused')}

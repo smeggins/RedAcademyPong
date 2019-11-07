@@ -43,6 +43,14 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## alpha 12
+
+    ball.js
+        *hitting another players wall now registers a scored goal...
+
+    game.js
+        *added all the functionality needed for the score system to work...
+
 ## alpha 11
 
     score.js

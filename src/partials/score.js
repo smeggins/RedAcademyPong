@@ -7,17 +7,17 @@ export default class Score {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.p1Score = 0;
-        this.p2Score = 0;
     }
     
-    render(svg) {
+    render(svg, scoreP1, scoreP2) {
         // let game = document.getElementById('game')
         // let scoreText = document.createElement('p')
         // scoreText.innerHTML = 'this is a test';
         // scoreText.setAttribute('id', 'scoreText');
         // game.appendChild(scoreText)
-
+        
+        this.p1Score = scoreP1;
+        this.p2Score = scoreP2;
 
         
         
@@ -36,7 +36,7 @@ export default class Score {
         text.setAttributeNS(null, "y", this.y + 15);
         text.setAttributeNS(null, "fill", 'red');
 
-        text.innerHTML = 'this is a test'
+        text.innerHTML = `${this.p1Score}  Score  ${this.p2Score}`
         svg.appendChild(text);
     };
   }

@@ -6,6 +6,9 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
+        this.scorePlayer1 = 0;
+        this.scorePlayer2 = 0;
+
 
         this.reset()
     }
@@ -32,10 +35,14 @@ export default class Ball {
             this.vy *= -1
         }
         else if (this.leftDetect <= 0) {
-            this.vx *= -1
+            this.vx *= -1,
+            this.scorePlayer1 += 1
+            this.reset()
         }
         else if (this.rightDetect >= this.boardWidth) {
             this.vx *= -1
+            this.scorePlayer2 += 1
+            this.reset()
         }
     }
 
