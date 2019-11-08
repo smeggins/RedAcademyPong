@@ -5,24 +5,25 @@ import { KEYS } from '../settings';
 import Ball from './Ball';
 import { Variables } from '../settings';
 import Score from './score';
+import { pauseMenu } from './Menus'
 
 export default class Game {
   constructor(element, width, height) {
     this.element = element;
     this.width = width;
     this.height = height;
-    this.gameElement = document.getElementById ('game');
+    this.gameElement = document.getElementById('game');
+    this.gameElementPause = document.getElementById('pause')
     this.paused = 1;
     this.pause();
     this.reset();
+    this.fullscreen();
 
     this.board = new Board (this.width, this.height);
 
-    // this.x = this.width / 51.2
-    // this.y = this.height / 2.56
-    this.paddleWidth = 8;
-    this.paddleHeight = 56;
-    this.boardGap = 10;
+    this.paddleWidth = this.width * .016;
+    this.paddleHeight = this.height * .22;
+    this.boardGap = Variables.paddleGap;
     this.up = KEYS.up;
     this.down = KEYS.down;
     this.a = KEYS.a;
@@ -62,6 +63,7 @@ export default class Game {
   render(dt) {
     if (this.paused == 1){
     this.gameElement.innerHTML = '';
+    this.gameElementPause.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, "svg");
     svg.setAttributeNS(null, "width", this.width);
     svg.setAttributeNS(null, "height", this.height);
@@ -73,7 +75,16 @@ export default class Game {
     this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
     this.ball.render(svg, this.player1, this.player2,);
     }  
-    // else {alert('paused')}
+     else {
+      this.gameElementPause.innerHTML = '';
+      let svg = document.createElementNS(SVG_NS, "svg");
+      svg.setAttributeNS(null, "width", this.width);
+      svg.setAttributeNS(null, "height", this.height);
+      svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
+      this.gameElementPause.appendChild(svg);
+      pauseMenu.paused(svg)
+      };
+
   };
 
   pause() {
@@ -87,13 +98,20 @@ export default class Game {
 
   reset() {
     document.addEventListener("keydown", event => {
-      console.log('reset function being accessed')
       if (event.key == 'r') {
+        console.log('reset function being accessed')
         this.ball.reset()
       }
     })
   }
 
+  fullscreen() {
+    document.addEventListener("keydown", event => {
+      if (event.key == 'f') {
+        document.documentElement.requestFullscreen()
+      }
+    })
+  }
 };
 
 

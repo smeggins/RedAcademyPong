@@ -1,5 +1,5 @@
 import { SVG_NS } from "../settings"
-import { KEYS } from "../settings"
+import { Variables } from "../settings"
 
 export default class Paddles {
     constructor (boardHeight, width, height, x, y, up, down) {
@@ -15,10 +15,10 @@ export default class Paddles {
         document.addEventListener("keydown", event => {
             switch (event.key) {
                 case up:
-                    this.y = Math.max(this.y - KEYS.speed, 0);
+                    this.y = Math.max(this.y - Variables.paddleSpeed, 0);
                     break;
                 case down:
-                    this.y = Math.min(this.y + KEYS.speed, this.boardHeight - this.height); 
+                    this.y = Math.min(this.y + Variables.paddleSpeed, this.boardHeight - this.height); 
                     break;
             }
         });

@@ -1,4 +1,5 @@
 import { SVG_NS } from "../settings"
+import { Variables } from "../settings"
 
 export default class Ball {
     constructor (radius, boardWidth, boardHeight) {
@@ -16,10 +17,12 @@ export default class Ball {
     reset() {
         this.x = (this.boardWidth / 2) - (this.radius / 2);
         this.y = this.boardHeight / 2;
+        this.ballSpeedHigh = Variables.ballSpeedHigh
+        this.ballSpeedLow = Variables.ballSpeedLow
 
 
-        this.vy = Math.floor(Math.random() * (10 - 5) + 1);
-        this.vx = this.direction * (6 - Math.abs(this.vy));
+        this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
+        this.vx = this.direction * (this.ballSpeedHigh - Math.abs(this.vy));
 
         console.log('reset pressed')
     }
@@ -63,7 +66,8 @@ export default class Ball {
     }
 
     troubleshoot(player1, player2) {
-        console.log(`ball topy: ${this.topDetect}, bottomy: ${this.bottomDetect}, leftx: ${this.leftDetect} rightx ${this.rightDetect}. Player 2 paddle topy: ${player1.y}, bottom y: ${this.p1BottomY} x: ${player1.x, this.p1PaddleX}`);
+        console.log(`ball topy: ${this.topDetect}, bottomy: ${this.bottomDetect}, leftx: ${this.leftDetect} rightx ${this.rightDetect}. Player 2 paddle topy: ${player1.y}, bottom y: ${this.p1BottomY} x: ${player1.x, this.p1PaddleX}
+        vy = ${this.vy} vx = ${this.vx}`);
     }
         
     
@@ -75,7 +79,7 @@ export default class Ball {
 
         this.wallCollision(player1, player2);
         this.paddleCollision(player1, player2);
-        // this.troubleshoot(player1, player2)
+        this.troubleshoot(player1, player2)
 
         // <circle cx="252" cy="124" r="8"/>
      let circle = document.createElementNS(SVG_NS, "circle");

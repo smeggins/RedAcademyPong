@@ -43,7 +43,25 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.1
+    
+    Adds a pause menu an options to select.
+    need to add pause menu functionality
+
 ## Beta 1.0
+
+    BUGS:
+        *ball collision is off on right paddle.
+        *Ball can get stuck IN the paddle if it hits from the top (ie add top and bottom paddle collision)
+
+    Priorities:
+        **AUDIO AS PER THE PROJECT GUIDLINE**
+        1.Game is scaleable
+        2.paddles can be controlled simultaniously
+        3.menus
+        4.Win condition
+        5.
+
     Goals:
         Front-End
             Menus:
@@ -90,6 +108,50 @@ Now check out your deployed site 🙂
             *Game size Scaleable
             *code clean-up
             *add audio
+            *set number of points required for a win
+            *add a goal screen/animation
+            *add a win screen (with play again option)
+            *add a launch button to start ball moving from start position.
+            *add ability to press buttons and have paddle move simultaniously for player 1 and 2
+            *impliment DT
+
+        
+
+       
+       
+       
+       
+       
+       
+        Main game pivot:
+            Note:
+                
+                **this is VERY unlikley to be completed over the long weekend, the focus will be on a polished multiplayer experience first as is required by the project outline**
+
+                *Time permitting i'd like the game to be a single player pong clone with an ai paddle on the other side with breakable blocks in-between...
+                *you would play up-down during regular play and left right during multiplayer...
+                * there would be certain blocks that have items in them and certain 'glowing' blocks that would gradually dim. if you break the block while its glowing you get a powerful power up. if the block goes out it becomes a single hit block...
+                *with each level more blocks would stand between you and the enemy paddle and some blocks would take more hits to break...
+                *some blocks are unbreakable and are used to create special level designs.
+                *there should be a currency from breaking gold blocks that you can use in a store menu to buy upgrades for your paddle...
+                *when the ball hits your area you lose your upgrades, otherwise you keep them from level to level...
+
+
+
+            *add AI option / difficulties
+            *add complex vector calculations to allow for "aiming" based on where the ball hits your paddle.
+                -ideas on this would be to set a vy instead of randomizing it and increasing (or decreasing) that vy by 1 the further left or right you are from center on the paddle
+            *add block-break function
+                -blocks containing items
+                -blocks that take more than 1 hit
+                -unbreakable blocks
+                -glowing 'super' blocks
+
+            *add store
+            *add abilities
+            *add levels
+            *add save feature (either to record progress of a game or to save high score)
+
 
 
 

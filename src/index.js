@@ -1,9 +1,11 @@
 // import './styles/game.css';
 import Game from './partials/Game';
+import { screenSettings } from './settings'
 
+const gameWidth = screenSettings.gameWidth;
+const gameHeight = screenSettings.gameHeight;
 
-// create a game instance
-const game = new Game('game', 512, 256);
+const game = new Game('game', gameWidth, gameHeight);
 
 let lastTime = 0;
 

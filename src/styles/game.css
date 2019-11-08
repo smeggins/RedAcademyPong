@@ -90,8 +90,10 @@ h1 {
   position: absolute;
   top: 35%;
   left: 43%;
+}
 
-
-
+#pause {
+  position: absolute;
+  top: 34%;
 }
 

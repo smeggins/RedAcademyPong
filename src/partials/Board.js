@@ -4,8 +4,9 @@ export default class Board {
     constructor (width, height) {
         this.width = width;
         this.height = height;
-        this.netWidth = 5
+        this.netWidth = width * .01;
         this.netPosition = width / 2;
+        this.netDensity = height * .06
     }
 
     render(svg) {
@@ -23,10 +24,10 @@ export default class Board {
     line.setAttributeNS(null, "x1", this.netPosition);
     line.setAttributeNS(null, "y1", "0");
     line.setAttributeNS(null, "x2", this.netPosition);
-    line.setAttributeNS(null, "y2", "256");
+    line.setAttributeNS(null, "y2", this.height);
     line.setAttributeNS(null, "stroke", "black");
     line.setAttributeNS(null, "stroke-width", this.netWidth);
-    line.setAttributeNS(null, "stroke-dasharray", "15");
+    line.setAttributeNS(null, "stroke-dasharray", this.netDensity);
     svg.appendChild(line);
     }
 };
