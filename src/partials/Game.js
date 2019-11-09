@@ -5,7 +5,7 @@ import { KEYS } from '../settings';
 import Ball from './Ball';
 import { Variables } from '../settings';
 import Score from './score';
-import { pauseMenu } from './Menus'
+import PauseMenu from './Menus'
 
 export default class Game {
   constructor(element, width, height) {
@@ -18,6 +18,7 @@ export default class Game {
     this.pause();
     this.reset();
     this.fullscreen();
+
 
     this.board = new Board (this.width, this.height);
 
@@ -58,10 +59,14 @@ export default class Game {
     this.scoreBoard = new Score (this.scoreX, this.scoreY, this.scoreWidth, this.scoreHeight);
 
 
+    this.pauseMenu = new PauseMenu (this.up, this.down);
+    this.pauseMenu.pauseMenuNav(this.up, this.down, this.pauseMenu.pauseUpdater(this.paused))
   }
 
   render(dt) {
+
     if (this.paused == 1){
+    console.log('rendering game')
     this.gameElement.innerHTML = '';
     this.gameElementPause.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, "svg");
@@ -76,13 +81,14 @@ export default class Game {
     this.ball.render(svg, this.player1, this.player2,);
     }  
      else {
+      console.log(`not rendering game ${this.paused}`)
       this.gameElementPause.innerHTML = '';
       let svg = document.createElementNS(SVG_NS, "svg");
       svg.setAttributeNS(null, "width", this.width);
       svg.setAttributeNS(null, "height", this.height);
       svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
       this.gameElementPause.appendChild(svg);
-      pauseMenu.paused(svg)
+      this.pauseMenu.render(svg, this.paused)
       };
 
   };

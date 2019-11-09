@@ -1,8 +1,52 @@
 import { SVG_NS } from '../settings';
 
-export const pauseMenu = {
+export default class PauseMenu  {
+    constructor(up, down) {
 
-    paused(svg) {
+
+        this.pauseMenuPosition = 0;
+
+        console.log(`pause menu pause status2: ${this.pause}`)
+
+    }
+
+    pauseMenuNav(up, down, pause) {
+        
+        this.pause = pause;
+
+        if (this.pause == -1) {
+            document.addEventListener("keydown", event => {
+                console.log(`pause menu pause status: ${this.pause}`)
+                switch (event.key) {
+                    case up:
+                        if (this.pauseMenuPosition <= 3) {
+                        this.pauseMenuPosition += 1;
+                        console.log(this.pauseMenuPosition)
+                        }
+                        break;
+                    case down:
+                        if (this.pauseMenuPosition >= 1) {
+                        this.pauseMenuPosition -= 1;
+                        console.log(this.pauseMenuPosition)
+                        }
+                        break;
+                }
+            });
+        }
+
+    };
+
+    pauseUpdater(paused) {
+        return paused
+    }
+
+    render(svg, paused) {
+
+
+        this.pauseUpdater(paused)
+    
+
+
         let pauseShade = document.createElementNS(SVG_NS, "rect");
         pauseShade.setAttributeNS(null, 'width', 512);
         pauseShade.setAttributeNS(null, 'height', 256);

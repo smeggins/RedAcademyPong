@@ -79,7 +79,7 @@ export default class Ball {
 
         this.wallCollision(player1, player2);
         this.paddleCollision(player1, player2);
-        this.troubleshoot(player1, player2)
+        // this.troubleshoot(player1, player2)
 
         // <circle cx="252" cy="124" r="8"/>
      let circle = document.createElementNS(SVG_NS, "circle");
