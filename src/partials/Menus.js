@@ -5,18 +5,12 @@ export default class PauseMenu  {
 
 
         this.pauseMenuPosition = 0;
-
-        console.log(`pause menu pause status2: ${this.pause}`)
-
-    }
-
-    pauseMenuNav(up, down, pause) {
         
-        this.pause = pause;
+        this.paused = 1;
 
-        if (this.pause == -1) {
+        if (this.paused == -1) {
             document.addEventListener("keydown", event => {
-                console.log(`pause menu pause status: ${this.pause}`)
+                console.log(`pause menu pause status: ${this.paused}`)
                 switch (event.key) {
                     case up:
                         if (this.pauseMenuPosition <= 3) {
@@ -30,20 +24,24 @@ export default class PauseMenu  {
                         console.log(this.pauseMenuPosition)
                         }
                         break;
-                }
+                };
             });
         }
 
-    };
 
-    pauseUpdater(paused) {
-        return paused
     }
 
-    render(svg, paused) {
+    pause() {
+        document.addEventListener("keydown", event => {
+          if (event.code == 'Space') {
+            this.paused *= -1;
+            console.log(`after pause press: ${this.paused}`);
+          }
+        })
+      }
 
 
-        this.pauseUpdater(paused)
+    render(svg) {
     
 
 

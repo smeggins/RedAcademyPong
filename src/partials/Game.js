@@ -14,8 +14,6 @@ export default class Game {
     this.height = height;
     this.gameElement = document.getElementById('game');
     this.gameElementPause = document.getElementById('pause')
-    this.paused = 1;
-    this.pause();
     this.reset();
     this.fullscreen();
 
@@ -60,12 +58,12 @@ export default class Game {
 
 
     this.pauseMenu = new PauseMenu (this.up, this.down);
-    this.pauseMenu.pauseMenuNav(this.up, this.down, this.pauseMenu.pauseUpdater(this.paused))
+    this.pauseMenu.pause();
   }
 
   render(dt) {
 
-    if (this.paused == 1){
+    if (this.pauseMenu.paused == 1){
     console.log('rendering game')
     this.gameElement.innerHTML = '';
     this.gameElementPause.innerHTML = '';
@@ -81,26 +79,17 @@ export default class Game {
     this.ball.render(svg, this.player1, this.player2,);
     }  
      else {
-      console.log(`not rendering game ${this.paused}`)
+      console.log(`not rendering game ${this.pauseMenu.paused}`)
       this.gameElementPause.innerHTML = '';
       let svg = document.createElementNS(SVG_NS, "svg");
       svg.setAttributeNS(null, "width", this.width);
       svg.setAttributeNS(null, "height", this.height);
       svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
       this.gameElementPause.appendChild(svg);
-      this.pauseMenu.render(svg, this.paused)
+      this.pauseMenu.render(svg)
       };
 
   };
-
-  pause() {
-    document.addEventListener("keydown", event => {
-      console.log(this.paused, event)
-      if (event.code == 'Space') {
-        this.paused *= -1;
-      }
-    })
-  }
 
   reset() {
     document.addEventListener("keydown", event => {
