@@ -8,25 +8,25 @@ export default class PauseMenu  {
         
         this.paused = 1;
 
-        if (this.paused == -1) {
-            document.addEventListener("keydown", event => {
-                console.log(`pause menu pause status: ${this.paused}`)
-                switch (event.key) {
-                    case up:
-                        if (this.pauseMenuPosition <= 3) {
-                        this.pauseMenuPosition += 1;
-                        console.log(this.pauseMenuPosition)
-                        }
-                        break;
-                    case down:
-                        if (this.pauseMenuPosition >= 1) {
-                        this.pauseMenuPosition -= 1;
-                        console.log(this.pauseMenuPosition)
-                        }
-                        break;
-                };
-            });
-        }
+        // if (1 == 1) {
+        //     document.addEventListener("keydown", event => {
+        //         console.log(`pause menu pause status: ${this.paused}`)
+        //         switch (event.key) {
+        //             case up:
+        //                 if (this.pauseMenuPosition <= 3) {
+        //                 this.pauseMenuPosition += 1;
+        //                 console.log(this.pauseMenuPosition)
+        //                 }
+        //                 break;
+        //             case down:
+        //                 if (this.pauseMenuPosition >= 1) {
+        //                 this.pauseMenuPosition -= 1;
+        //                 console.log(this.pauseMenuPosition)
+        //                 }
+        //                 break;
+        //         };
+        //     });
+        // }
 
 
     }
@@ -41,10 +41,30 @@ export default class PauseMenu  {
       }
 
 
-    render(svg) {
-    
+    render(svg, up, down) {
+        
+            this.lastEvent;
 
-
+            document.addEventListener("keydown", event => {
+                console.log(`pause menu pause status: ${this.paused}`)
+                switch (event.key) {
+                    case up:
+                        if (this.pauseMenuPosition <= 3 && this.lastEvent != event) {
+                        this.pauseMenuPosition += 1;
+                        console.log(`menu position: ${this.pauseMenuPosition}, event = ${event}`)
+                        }
+                        this.lastEvent = event
+                        break;
+                    case down:
+                        if (this.pauseMenuPosition >= 1 && this.lastEvent != event) {
+                        this.pauseMenuPosition -= 1;
+                        console.log(this.pauseMenuPosition)
+                        }
+                        this.lastEvent = event
+                        break;
+                };
+            });
+        
         let pauseShade = document.createElementNS(SVG_NS, "rect");
         pauseShade.setAttributeNS(null, 'width', 512);
         pauseShade.setAttributeNS(null, 'height', 256);

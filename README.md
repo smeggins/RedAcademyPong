@@ -43,6 +43,10 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.13
+
+    Finally found a solution to the pause menu issue. But it seems to have significant latency lag, may need to be more specific when calling event.
+
 ## Beta 1.12
 
     added code to track menu selection but having a hard time getting an updated value from my game class to apply to my pause class

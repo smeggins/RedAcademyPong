@@ -86,7 +86,7 @@ export default class Game {
       svg.setAttributeNS(null, "height", this.height);
       svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
       this.gameElementPause.appendChild(svg);
-      this.pauseMenu.render(svg)
+      this.pauseMenu.render(svg, this.up, this.down)
       };
 
   };
