@@ -43,6 +43,17 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 2
+
+    Menu.js
+        fixed the pause menu issue. works like a dream now.
+        
+    paddle.js
+        applied the same concept to fix the paddle movement in menu bug
+
+    Note:
+        I dreamed about the pausemenu problem all night... and then, INSPIRATION! the answer was staring me in the face the whole time. of course I check the value of paused IN the event handler so it checks every time a key is pressed...... I cant believe that took me like 4 hours at least of googling, and troubleshooting.. I deserve a treat, greasy diner breakfast here i come!
+
 ## Beta 1.16
 
     Restart function in pause menu is now fully functional!
@@ -76,6 +87,7 @@ Now check out your deployed site 🙂
     BUGS:
         *ball collision is off on right paddle.
         *Ball can get stuck IN the paddle if it hits from the top (ie add top and bottom paddle collision)
+        *Ball can have too verticle a trajectory
 
     Priorities:
         **AUDIO AS PER THE PROJECT GUIDLINE**

@@ -56,12 +56,14 @@ export default class Paddles {
         // });
     }
     
-    render(svg) {
+    render(svg, paused) {
+        console.log(paused)
+        this.paused = paused
 
-        if (this.keyUP) {
+        if (paused && this.keyUP) {
             this.y = Math.max(this.y - Variables.paddleSpeed, 0);
         }
-        else if (this.keyDown) {
+        else if (this.paused == 1 && this.keyDown) {
             this.y = Math.min(this.y + Variables.paddleSpeed, this.boardHeight - this.height); 
         }
         

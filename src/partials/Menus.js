@@ -9,6 +9,7 @@ export default class PauseMenu  {
         this.pauseMenuPosition = 4;
         this.optionMenuPosition = 4;
         this.paused = 1;
+        this.Win = 1;
 
         // if (1 == 1) {
         //     document.addEventListener("keydown", event => {
@@ -30,17 +31,19 @@ export default class PauseMenu  {
         //     });p
         // }
 
+        PauseMenu.prototype.pause = (up, down, enter) => {
+            document.addEventListener("keydown", event => {
+              if (event.key == 'p') {
+                this.pauseState = this.pausedM
+                this.paused *= -1;
+                console.log(`paused state after pressing p: ${this.paused}, pause argument: ${this.pauseState}`);
+              }
+            })
+          }
 
     }
 
-    pause() {
-        document.addEventListener("keydown", event => {
-          if (event.key == 'p') {
-            this.paused *= -1;
-            console.log(`paused state after pressing p: ${this.paused}`);
-          }
-        })
-      }
+
 
     get pausedM() {
         return this.paused
@@ -50,18 +53,17 @@ export default class PauseMenu  {
     pauseMenuNav(up, down, enter) {
 
 
-        if (-1 == -1) {
             document.addEventListener("keydown", event => {
                 console.log(`pause menu pause status: ${this.paused} event key: ${event.key}`)
                 switch (event.key) {
                     case up:
-                        if (this.pauseMenuPosition <= 3) {
+                        if (this.pausedM == -1 && this.pauseMenuPosition <= 3) {
                         this.pauseMenuPosition += 1;
                         console.log(`menu position: ${this.pauseMenuPosition}, ${this.paused}`)
                         }
                         break;
                     case down:
-                        if (this.pauseMenuPosition >= 2) {
+                        if (this.pausedM == -1 && this.pauseMenuPosition >= 2) {
                         this.pauseMenuPosition -= 1;
                         console.log(this.pauseMenuPosition)
                         }
@@ -83,7 +85,7 @@ export default class PauseMenu  {
                             break;
                 };
             });
-        }
+        
     }
 
     render(svg, up, down, enter) {

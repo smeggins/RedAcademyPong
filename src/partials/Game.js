@@ -58,17 +58,14 @@ export default class Game {
 
 
     this.pauseMenu = new PauseMenu (this.up, this.down);
-    this.pauseMenu.pause();
-    this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter);
+    PauseMenu.prototype.pause(this.up, this.down, this.enter);
+    this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter, this.paused);
 
     Game.prototype.reset = () => {
-      document.addEventListener("keydown", event => {
           console.log('reset function being accessed')
           Ball.prototype.reset()
           this.ball.scorePlayer2 = 0
           this.ball.scorePlayer1 = 0
-        
-      })
     }
     Game.prototype.reset()
   }
@@ -98,8 +95,8 @@ render(dt) {
   svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
   this.gameElement.appendChild(svg);
   this.board.render(svg);
-  this.player1.render(svg);
-  this.player2.render(svg);
+  this.player1.render(svg, this.pauseMenu.pausedM);
+  this.player2.render(svg, this.pauseMenu.pausedM);
   this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
   this.ball.render(svg, this.player1, this.player2,);
   }  
