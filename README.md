@@ -43,6 +43,11 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.15
+
+    Made both paddles able to move smoothly and independantly of each other. 
+        -took a while, spent a long time trying to get keypress to work over seperate key up and down checks but at the end of the day this works... 
+
 ## Beta 1.14
 
     pressing pause on my pausemenu.
