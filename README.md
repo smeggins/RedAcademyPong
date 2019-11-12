@@ -43,6 +43,12 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.14
+
+    pressing pause on my pausemenu.
+        -had to remove my menu nav from my render loop after it caused too much instability. still trying to find a way to update the (paused = ) in my menunav so it only works when the game is paused..
+        -haven't been able to figure out how to call the reset function in my Game class in a method within my menu class.. basically to reset the game when the option is selected in the menu  
+
 ## Beta 1.13
 
     Finally found a solution to the pause menu issue. But it seems to have significant latency lag, may need to be more specific when calling event.

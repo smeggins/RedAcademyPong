@@ -27,6 +27,7 @@ export default class Game {
     this.down = KEYS.down;
     this.a = KEYS.a;
     this.z = KEYS.z;
+    this.enter = KEYS.enter;
 
     this.player1 = new Paddles (
       this.height, 
@@ -59,43 +60,17 @@ export default class Game {
 
     this.pauseMenu = new PauseMenu (this.up, this.down);
     this.pauseMenu.pause();
+    this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter, this.reset())
   }
 
-  render(dt) {
-
-    if (this.pauseMenu.paused == 1){
-    console.log('rendering game')
-    this.gameElement.innerHTML = '';
-    this.gameElementPause.innerHTML = '';
-    let svg = document.createElementNS(SVG_NS, "svg");
-    svg.setAttributeNS(null, "width", this.width);
-    svg.setAttributeNS(null, "height", this.height);
-    svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
-    this.gameElement.appendChild(svg);
-    this.board.render(svg);
-    this.player1.render(svg);
-    this.player2.render(svg);
-    this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
-    this.ball.render(svg, this.player1, this.player2,);
-    }  
-     else {
-      console.log(`not rendering game ${this.pauseMenu.paused}`)
-      this.gameElementPause.innerHTML = '';
-      let svg = document.createElementNS(SVG_NS, "svg");
-      svg.setAttributeNS(null, "width", this.width);
-      svg.setAttributeNS(null, "height", this.height);
-      svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
-      this.gameElementPause.appendChild(svg);
-      this.pauseMenu.render(svg, this.up, this.down)
-      };
-
-  };
 
   reset() {
     document.addEventListener("keydown", event => {
       if (event.key == 'r') {
         console.log('reset function being accessed')
         this.ball.reset()
+        this.ball.scorePlayer2 = 0
+        this.ball.scorePlayer1 = 0
       }
     })
   }
@@ -107,6 +82,36 @@ export default class Game {
       }
     })
   }
+
+
+
+render(dt) {
+
+  if (this.pauseMenu.pausedM == 1){
+  console.log(`rendering game`)
+  this.gameElement.innerHTML = '';
+  this.gameElementPause.innerHTML = '';
+  let svg = document.createElementNS(SVG_NS, "svg");
+  svg.setAttributeNS(null, "width", this.width);
+  svg.setAttributeNS(null, "height", this.height);
+  svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
+  this.gameElement.appendChild(svg);
+  this.board.render(svg);
+  this.player1.render(svg);
+  this.player2.render(svg);
+  this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
+  this.ball.render(svg, this.player1, this.player2,);
+  }  
+   else {
+    console.log(`not rendering game ${this.pauseMenu.paused}`)
+    this.gameElementPause.innerHTML = '';
+    let svg = document.createElementNS(SVG_NS, "svg");
+    svg.setAttributeNS(null, "width", this.width);
+    svg.setAttributeNS(null, "height", this.height);
+    svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
+    this.gameElementPause.appendChild(svg);
+    this.pauseMenu.render(svg, this.up, this.down, this.enter)
+    };
+
 };
-
-
+};

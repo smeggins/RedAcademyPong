@@ -17,9 +17,8 @@ export default class Ball {
     reset() {
         this.x = (this.boardWidth / 2) - (this.radius / 2);
         this.y = this.boardHeight / 2;
-        this.ballSpeedHigh = Variables.ballSpeedHigh
-        this.ballSpeedLow = Variables.ballSpeedLow
-
+        this.ballSpeedHigh = Variables.ballSpeedHigh;
+        this.ballSpeedLow = Variables.ballSpeedLow;
 
         this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
         this.vx = this.direction * (this.ballSpeedHigh - Math.abs(this.vy));

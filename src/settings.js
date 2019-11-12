@@ -6,6 +6,7 @@ export const KEYS = {
     up: 'ArrowUp',
     down: 'ArrowDown',
     spaceBar: 'Space',
+    enter: 'Enter'
 };
 
 export const screenSettings = {
