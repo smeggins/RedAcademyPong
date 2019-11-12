@@ -43,6 +43,10 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 1.16
+
+    Restart function in pause menu is now fully functional!
+
 ## Beta 1.15
 
     Made both paddles able to move smoothly and independantly of each other. 

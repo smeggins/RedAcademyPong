@@ -1,5 +1,6 @@
 import { SVG_NS } from '../settings';
-import game from './Game';
+import Game from './Game';
+import Ball from './Ball';
 
 export default class PauseMenu  {
     constructor(up, down) {
@@ -26,7 +27,7 @@ export default class PauseMenu  {
         //                 }
         //                 break;
         //         };
-        //     });
+        //     });p
         // }
 
 
@@ -46,10 +47,10 @@ export default class PauseMenu  {
     }
 
 
-    pauseMenuNav(up, down, enter, reset) {
+    pauseMenuNav(up, down, enter) {
 
 
-        if (reset == -1) {
+        if (-1 == -1) {
             document.addEventListener("keydown", event => {
                 console.log(`pause menu pause status: ${this.paused} event key: ${event.key}`)
                 switch (event.key) {
@@ -74,9 +75,7 @@ export default class PauseMenu  {
                             }
                         else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 2) {
                             console.log('restarted the match')
-                            reset
-                            // Ball.scorePlayer2 = 0
-                            // Ball.scorePlayer1 = 0
+                            Game.prototype.reset()
                             }
                         else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 1) {
                             console.log('exited to main')

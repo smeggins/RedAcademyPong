@@ -14,7 +14,6 @@ export default class Game {
     this.height = height;
     this.gameElement = document.getElementById('game');
     this.gameElementPause = document.getElementById('pause')
-    this.reset();
     this.fullscreen();
 
 
@@ -60,20 +59,22 @@ export default class Game {
 
     this.pauseMenu = new PauseMenu (this.up, this.down);
     this.pauseMenu.pause();
-    this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter, this.reset())
+    this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter);
+
+    Game.prototype.reset = () => {
+      document.addEventListener("keydown", event => {
+          console.log('reset function being accessed')
+          Ball.prototype.reset()
+          this.ball.scorePlayer2 = 0
+          this.ball.scorePlayer1 = 0
+        
+      })
+    }
+    Game.prototype.reset()
   }
 
 
-  reset() {
-    document.addEventListener("keydown", event => {
-      if (event.key == 'r') {
-        console.log('reset function being accessed')
-        this.ball.reset()
-        this.ball.scorePlayer2 = 0
-        this.ball.scorePlayer1 = 0
-      }
-    })
-  }
+
 
   fullscreen() {
     document.addEventListener("keydown", event => {
