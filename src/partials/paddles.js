@@ -15,7 +15,7 @@ export default class Paddles {
         
         this.score = 0;
 
-        let keyDownPressed = (event)=> {
+        let keyDownPressed = (event) => {
             if (event.key == up) {
                 this.keyUP = true;
             }
@@ -25,7 +25,7 @@ export default class Paddles {
         }
 
         
-        let keyUpPressed = (event)=> {
+        let keyUpPressed = (event) => {
             if (event.key == up) {
                 this.keyUP = false;
             }
@@ -56,11 +56,15 @@ export default class Paddles {
         // });
     }
     
-    render(svg, paused) {
-        console.log(paused)
-        this.paused = paused
+    paddleReset() {
+        console.log(`addpaddlereset`)
+    }
 
-        if (paused && this.keyUP) {
+    render(svg, paused) {
+        this.paused = paused
+        this.paddleReset()
+
+        if (this.paused == 1 && this.keyUP) {
             this.y = Math.max(this.y - Variables.paddleSpeed, 0);
         }
         else if (this.paused == 1 && this.keyDown) {

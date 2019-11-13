@@ -1,6 +1,5 @@
 import { SVG_NS } from '../settings';
 import Game from './Game';
-import Ball from './Ball';
 
 export default class PauseMenu  {
     constructor(up, down) {
@@ -9,32 +8,10 @@ export default class PauseMenu  {
         this.pauseMenuPosition = 4;
         this.optionMenuPosition = 4;
         this.paused = 1;
-        this.Win = 1;
 
-        // if (1 == 1) {
-        //     document.addEventListener("keydown", event => {
-        //         console.log(`pause menu pause status: ${this.paused}`)
-        //         switch (event.key) {
-        //             case up:
-        //                 if (this.pauseMenuPosition <= 3) {
-        //                 this.pauseMenuPosition += 1;
-        //                 console.log(this.pauseMenuPosition)
-        //                 }
-        //                 break;
-        //             case down:
-        //                 if (this.pauseMenuPosition >= 1) {
-        //                 this.pauseMenuPosition -= 1;
-        //                 console.log(this.pauseMenuPosition)
-        //                 }
-        //                 break;
-        //         };
-        //     });p
-        // }
-
-        PauseMenu.prototype.pause = (up, down, enter) => {
+        PauseMenu.prototype.pause = () => {
             document.addEventListener("keydown", event => {
-              if (event.key == 'p') {
-                this.pauseState = this.pausedM
+              if (event.key == 'p' && this.paused != -1) {
                 this.paused *= -1;
                 console.log(`paused state after pressing p: ${this.paused}, pause argument: ${this.pauseState}`);
               }
@@ -46,7 +23,7 @@ export default class PauseMenu  {
 
 
     get pausedM() {
-        return this.paused
+        return this.paused;
     }
 
 
@@ -88,53 +65,9 @@ export default class PauseMenu  {
         
     }
 
-    render(svg, up, down, enter) {
-        
-        //     this.lastEvent;
-
-        // if (this.pausedM == -1) {
-        //     document.addEventListener("keydown", event => {
-        //         console.log(`pause menu pause status: ${this.paused} event key: ${event.key}`)
-        //         switch (event.key) {
-        //             case up:
-        //                 if (this.pauseMenuPosition <= 3 && this.lastEvent != event.key) {
-        //                 this.pauseMenuPosition += 1;
-        //                 console.log(`menu position: ${this.pauseMenuPosition}`)
-        //                 }
-        //                 this.lastEvent = event.key
-        //                 break;
-        //             case down:
-        //                 if (this.pauseMenuPosition >= 2 && this.lastEvent != event.key) {
-        //                 this.pauseMenuPosition -= 1;
-        //                 console.log(this.pauseMenuPosition)
-        //                 }
-        //                 this.lastEvent = event.key
-        //                 break;
-        //             case enter:
-        //                 if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 4 && this.lastEvent != event.key) {
-        //                     this.paused *= -1;
-        //                     }
-        //                 else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 3 && this.lastEvent != event.key) {
-        //                     console.log('entered options')
-        //                     }
-        //                 else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 2 && this.lastEvent != event.key) {
-        //                     console.log('restarted the match')
-        //                     Game.reset()
-        //                     // Ball.scorePlayer2 = 0
-        //                     // Ball.scorePlayer1 = 0
-        //                     }
-        //                 else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 1 && this.lastEvent != event.key) {
-        //                     console.log('exited to main')
-        //                     }        
-        //                     this.lastEvent = event.key
-        //                     break;
-        //         };
-        //     });
-        // }
-
-        // this.lastEvent = ''
-        
+    render(svg, winpos) {
         if (this.pauseMenuDepth == 0) {
+
         let pauseShade = document.createElementNS(SVG_NS, "rect");
         pauseShade.setAttributeNS(null, 'width', 512);
         pauseShade.setAttributeNS(null, 'height', 256);

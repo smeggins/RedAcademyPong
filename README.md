@@ -43,11 +43,17 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 2.1
+
+    game.js & score.js
+        -win screen is now working. 
+            -still need to stop the win screen from directing to the pause menu
+
 ## Beta 2
 
     Menu.js
         fixed the pause menu issue. works like a dream now.
-        
+
     paddle.js
         applied the same concept to fix the paddle movement in menu bug
 
@@ -88,6 +94,7 @@ Now check out your deployed site 🙂
         *ball collision is off on right paddle.
         *Ball can get stuck IN the paddle if it hits from the top (ie add top and bottom paddle collision)
         *Ball can have too verticle a trajectory
+        *Ball can end up in paddle if you move the paddle in the same direction the ball is coming when they are parallel
 
     Priorities:
         **AUDIO AS PER THE PROJECT GUIDLINE**

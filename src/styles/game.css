@@ -103,3 +103,6 @@ h1 {
   transform: translate(-50%, -50%);
 }
 
+#youWin {
+  font-size: 5vh;
+}

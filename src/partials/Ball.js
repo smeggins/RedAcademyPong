@@ -1,5 +1,6 @@
 import { SVG_NS } from "../settings"
 import { Variables } from "../settings"
+import { constants } from "../settings"
 
 export default class Ball {
     constructor (radius, boardWidth, boardHeight) {
@@ -16,8 +17,9 @@ export default class Ball {
             this.ballSpeedHigh = Variables.ballSpeedHigh;
             this.ballSpeedLow = Variables.ballSpeedLow;
     
+            // this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
             this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
-            this.vx = this.direction * (this.ballSpeedHigh - Math.abs(this.vy));
+            this.vx = this.direction * (((this.ballSpeedHigh - Math.abs(this.vy)) + 2) * constants.ballSpeed[3]);
     
             console.log('reset pressed')
         }

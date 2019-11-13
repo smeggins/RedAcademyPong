@@ -6,13 +6,13 @@ export const KEYS = {
     up: 'ArrowUp',
     down: 'ArrowDown',
     spaceBar: 'Space',
-    enter: 'Enter'
+    enter: 'Enter',
 };
 
 export const screenSettings = {
     gameWidth: 512,
     gameHeight: 256,
-}
+};
 
 export const constants = {
     ballSizeRatio: .031,
@@ -20,7 +20,8 @@ export const constants = {
     ballSpeedRatioHigh: .012,
     ballSpeedRatioLow: .002,
     screenValue: screenSettings.gameWidth * screenSettings.gameHeight,
-}
+    ballSpeed: [.4, .5, .6, .7, .8, .9, 1]
+};
 
 export const Variables = {
     ballSize: screenSettings.gameHeight * constants.ballSizeRatio,
@@ -28,5 +29,5 @@ export const Variables = {
     paddleSpeed: (screenSettings.gameWidth * screenSettings.gameHeight) * constants.speedRatio,
     ballSpeedHigh: screenSettings.gameWidth * constants.ballSpeedRatioHigh, 
     ballSpeedLow: screenSettings.gameWidth * constants.ballSpeedRatioLow, 
-
+    scoreToWin: 2,
 };

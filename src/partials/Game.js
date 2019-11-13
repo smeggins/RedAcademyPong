@@ -49,16 +49,15 @@ export default class Game {
     this.radius = Variables.ballSize, 
     this.ball = new Ball (this.radius, this.width, this.height);
 
-
-    this.scoreWidth = 128,
-    this.scoreHeight = 20,
-    this.scoreX = 192,
-    this.scoreY = 5,
+    this.scoreWidth = 128;
+    this.scoreHeight = 20;
+    this.scoreX = 192;
+    this.scoreY = 5;
     this.scoreBoard = new Score (this.scoreX, this.scoreY, this.scoreWidth, this.scoreHeight);
 
 
     this.pauseMenu = new PauseMenu (this.up, this.down);
-    PauseMenu.prototype.pause(this.up, this.down, this.enter);
+    PauseMenu.prototype.pause();
     this.pauseMenu.pauseMenuNav(this.up, this.down, this.enter, this.paused);
 
     Game.prototype.reset = () => {
@@ -84,9 +83,10 @@ export default class Game {
 
 
 render(dt) {
+  this.isPaused = this.pauseMenu.pausedM;
 
-  if (this.pauseMenu.pausedM == 1){
-  console.log(`rendering game`)
+  if (this.isPaused == 1){
+  console.log(`rendering game`);
   this.gameElement.innerHTML = '';
   this.gameElementPause.innerHTML = '';
   let svg = document.createElementNS(SVG_NS, "svg");
@@ -97,19 +97,41 @@ render(dt) {
   this.board.render(svg);
   this.player1.render(svg, this.pauseMenu.pausedM);
   this.player2.render(svg, this.pauseMenu.pausedM);
-  this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2);
+  this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2, this.pauseMenu.paused);
   this.ball.render(svg, this.player1, this.player2,);
+  if (this.scoreBoard.win == 1) {
+    this.pauseMenu.paused *= -1;
+  };
   }  
-   else {
-    console.log(`not rendering game ${this.pauseMenu.paused}`)
+  
+  else if (this.isPaused == -1) {
+    console.log(`not rendering game ${this.pauseMenu.paused}`);
     this.gameElementPause.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, "svg");
     svg.setAttributeNS(null, "width", this.width);
     svg.setAttributeNS(null, "height", this.height);
     svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
     this.gameElementPause.appendChild(svg);
-    this.pauseMenu.render(svg, this.up, this.down, this.enter)
-    };
+    
+    if (this.scoreBoard.winUpdator == 0) {
+      this.pauseMenu.render(svg, this.scoreBoard.winUpdator);
+    }
+
+    else if (this.scoreBoard.winUpdator == 1) {
+
+      this.scoreBoard.renderWin(svg);
+
+      const winEvent = () => {
+        this.scoreBoard.win = 0
+        this.ball.scorePlayer1 = 0
+        this.ball.scorePlayer2 = 0
+
+        document.removeEventListener("keydown", winEvent) 
+      }
+
+      document.addEventListener("keydown", winEvent)
+    }
+  }
 
 };
 };
