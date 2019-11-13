@@ -1,8 +1,10 @@
 import { SVG_NS } from '../settings';
 import Game from './Game';
+import { gameState } from './Game';
+import { menu } from './Game'
 
 export default class PauseMenu  {
-    constructor(up, down) {
+    constructor() {
 
         this.pauseMenuDepth = 0;
         this.pauseMenuPosition = 4;
@@ -13,7 +15,6 @@ export default class PauseMenu  {
             document.addEventListener("keydown", event => {
               if (event.key == 'p' && this.paused != -1) {
                 this.paused *= -1;
-                console.log(`paused state after pressing p: ${this.paused}, pause argument: ${this.pauseState}`);
               }
             })
           }
@@ -31,32 +32,35 @@ export default class PauseMenu  {
 
 
             document.addEventListener("keydown", event => {
-                console.log(`pause menu pause status: ${this.paused} event key: ${event.key}`)
                 switch (event.key) {
                     case up:
-                        if (this.pausedM == -1 && this.pauseMenuPosition <= 3) {
+                        if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuPosition <= 3) {
                         this.pauseMenuPosition += 1;
-                        console.log(`menu position: ${this.pauseMenuPosition}, ${this.paused}`)
+                        }
+                        else if(gameState.menu == 0 && menu.mainMenuPositio <= 1) {
+                            menu.mainMenuPosition += 1
                         }
                         break;
                     case down:
-                        if (this.pausedM == -1 && this.pauseMenuPosition >= 2) {
+                        if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuPosition >= 2) {
                         this.pauseMenuPosition -= 1;
-                        console.log(this.pauseMenuPosition)
+                        }
+                        else if(gameState.menu == 0 && menu.mainMenuPositio >= 2) {
+                            menu.mainMenuPosition -= 1
                         }
                         break;
                     case enter:
                         if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 4) {
                             this.paused *= -1;
                             }
-                        else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 3) {
+                        else if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 3) {
                             console.log('entered options')
                             }
-                        else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 2) {
-                            console.log('restarted the match')
-                            Game.prototype.reset()
+                        else if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 2) {
+                            Game.prototype.reset();
+                            this.paused *= -1;
                             }
-                        else if (this.pausedM == -1 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 1) {
+                        else if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 1) {
                             console.log('exited to main')
                             }        
                             break;
@@ -71,6 +75,8 @@ export default class PauseMenu  {
         let pauseShade = document.createElementNS(SVG_NS, "rect");
         pauseShade.setAttributeNS(null, 'width', 512);
         pauseShade.setAttributeNS(null, 'height', 256);
+        pauseShade.setAttributeNS(null, "rx", 10)
+        pauseShade.setAttributeNS(null, "ry", 10)
         pauseShade.setAttributeNS(null, 'fill', 'black');
         pauseShade.setAttributeNS(null, 'opacity', 0.3);
         svg.appendChild(pauseShade);
@@ -160,5 +166,34 @@ export default class PauseMenu  {
         svg.appendChild(exit);
 
         }
+    }
+
+    mainMenuRender(svg, width, height) {
+
+        let pongMenuText = document.createElementNS(SVG_NS, "text");
+        pongMenuText.setAttributeNS(null, "x", width / 2);
+        pongMenuText.setAttributeNS(null, "y", height * .25);
+        pongMenuText.setAttributeNS(null, "fill", 'red');
+        pongMenuText.setAttributeNS(null, "id", 'pongMenuText');
+        pongMenuText.innerHTML = `Pong`
+        svg.appendChild(pongMenuText);
+
+        let vsMenuText = document.createElementNS(SVG_NS, "text");
+        vsMenuText.setAttributeNS(null, "x", width / 2);
+        vsMenuText.setAttributeNS(null, "y", height /2);
+        vsMenuText.setAttributeNS(null, "fill", 'red');
+        vsMenuText.setAttributeNS(null, "id", 'vsMenuText');
+        vsMenuText.innerHTML = `play`
+        svg.appendChild(vsMenuText);
+
+        let paddle = document.createElementNS(SVG_NS, "rect");
+        paddle.setAttributeNS(null, 'x', width / 2 );
+        paddle.setAttributeNS(null, 'y', height / 2);
+        paddle.setAttributeNS(null, 'width', 5);
+        paddle.setAttributeNS(null, 'height', 20);
+        paddle.setAttributeNS(null, 'fill', 'black');
+        svg.appendChild(paddle);
+
+        
     }
 };

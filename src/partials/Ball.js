@@ -10,9 +10,10 @@ export default class Ball {
         this.direction = 1;
         this.scorePlayer1 = 0;
         this.scorePlayer2 = 0;
+        this.serve = 0;
 
         Ball.prototype.reset = () => {
-            this.x = (this.boardWidth / 2) - (this.radius / 2);
+            this.x = (this.boardWidth / 2) + (this.radius/2);
             this.y = this.boardHeight / 2;
             this.ballSpeedHigh = Variables.ballSpeedHigh;
             this.ballSpeedLow = Variables.ballSpeedLow;
@@ -26,7 +27,9 @@ export default class Ball {
         Ball.prototype.reset()
     }
 
-
+    get serveCheck() {
+        return this.serve;
+    }
 
     wallCollision() {
         this.topDetect = this.y - (this.radius);
@@ -61,7 +64,7 @@ export default class Ball {
             this.vx *= -1;
         }
 
-        else if (this.leftDetect <= player1.x && (this.y || this.topDetect || this.bottomDetect) >= player1.y && (this.y || this.bottomDetect || this.topDetect) <= this.p1BottomY ){
+        else if (this.leftDetect <= this.p1PaddleX && (this.y || this.topDetect || this.bottomDetect) >= player1.y && (this.y || this.bottomDetect || this.topDetect) <= this.p1BottomY ){
             this.vx *= -1;
         }
     }

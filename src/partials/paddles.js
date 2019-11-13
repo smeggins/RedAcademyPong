@@ -72,13 +72,13 @@ export default class Paddles {
         }
         
         // <rect x="10" y="100" width="8" height="56" fill="black" />
-        let rect = document.createElementNS(SVG_NS, "rect");
-        rect.setAttributeNS(null, 'x', this.x);
-        rect.setAttributeNS(null, 'y', this.y);
-        rect.setAttributeNS(null, 'width', this.width);
-        rect.setAttributeNS(null, 'height', this.height);
-        rect.setAttributeNS(null, 'fill', 'black');
-        svg.appendChild(rect);
+        let paddle = document.createElementNS(SVG_NS, "rect");
+        paddle.setAttributeNS(null, 'x', this.x);
+        paddle.setAttributeNS(null, 'y', this.y);
+        paddle.setAttributeNS(null, 'width', this.width);
+        paddle.setAttributeNS(null, 'height', this.height);
+        paddle.setAttributeNS(null, 'fill', 'black');
+        svg.appendChild(paddle);
     }
 
     

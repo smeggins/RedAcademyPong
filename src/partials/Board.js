@@ -5,17 +5,21 @@ export default class Board {
         this.width = width;
         this.height = height;
         this.netWidth = width * .01;
-        this.netPosition = width / 2;
+        this.netPosition = width / 2 - (this.netWidth/2);
         this.netDensity = height * .06
     }
 
+    
     render(svg) {
         
 				// <rect width="512" height="256" fill="#353535" stroke="black" stroke-width="5" />
     let rect = document.createElementNS(SVG_NS, "rect")
     rect.setAttributeNS(null, "width", this.width);
     rect.setAttributeNS(null, "height", this.height); 
+    rect.setAttributeNS(null, "stroke", "black");
+    rect.setAttributeNS(null, "stroke-width", this.netWidth);
     rect.setAttributeNS(null, "fill", "#353535");
+    rect.setAttributeNS(null, "id", "boardBack")
     svg.appendChild(rect);
 
                 

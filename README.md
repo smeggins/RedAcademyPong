@@ -43,6 +43,10 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 2.2 
+
+    Got half way to getting the start menu finished and switched some of my values over to an object in game to make it easier to change and refer to those values
+
 ## Beta 2.1
 
     game.js & score.js
