@@ -1,4 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
+ /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
 */
@@ -83,13 +83,6 @@ h1 {
   text-align: center;
 }
 
-.scoreText {
-  display: block;
-  position: absolute;
-  top: 35%;
-  left: 43%;
-}
-
 #game {
   position: absolute;
   top: 50%;
@@ -111,7 +104,7 @@ h1 {
 #background {
   position: absolute;
   top: 50.9%;
-  left: 52%;
+  left: 52.5%;
   transform: translate(-48%, -48%);
   width: 1149px;
   height: 530px;
@@ -120,4 +113,18 @@ h1 {
 
 #boardBack {
   opacity: 0;
+}
+
+#scoreBox {
+  opacity: .7;
+}
+
+#pongMenuText {
+  font-size: 75px;
+  text-shadow: 2px 2px 3px black;
+}
+
+.vsMenuText {
+  font-size: 25px;
+  text-shadow: 2px 2px 3px black;
 }

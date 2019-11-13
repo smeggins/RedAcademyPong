@@ -20,6 +20,7 @@ export default class Game {
 
     this.paddleWidth = this.width * .016;
     this.paddleHeight = this.height * .22;
+    this.paddleStartPos = (this.height - this.paddleHeight) / 2
     this.boardGap = Variables.paddleGap;
     this.up = KEYS.up;
     this.down = KEYS.down;
@@ -32,7 +33,7 @@ export default class Game {
       this.paddleWidth, 
       this.paddleHeight, 
       this.boardGap, 
-      ((this.height - this.paddleHeight) / 2),
+      this.paddleStartPos,
       this.a,
       this.z);
 
@@ -41,7 +42,7 @@ export default class Game {
       this.paddleWidth, 
       this.paddleHeight, 
       ((this.width - this.boardGap) - this.paddleWidth), 
-      ((this.height - this.paddleHeight) / 2),
+      this.paddleStartPos,
       this.up,
       this.down);
 
@@ -66,6 +67,7 @@ export default class Game {
           this.ball.scorePlayer1 = 0
     }
     Game.prototype.reset()
+    
   }
 
 
@@ -84,7 +86,7 @@ export default class Game {
 render(dt) {
   this.isPaused = this.pauseMenu.pausedM;
 
-  if (gameState.menu == 0) {
+  if (gameState.menu == 1) {
     this.gameElement.innerHTML = '';
     this.gameElementPause.innerHTML = '';
     let svg = document.createElementNS(SVG_NS, "svg");
@@ -93,6 +95,10 @@ render(dt) {
     svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
     this.gameElement.appendChild(svg);
     this.pauseMenu.mainMenuRender(svg, this.width, this.height)
+    this.pauseMenu.pauseMenuPosReset()
+    this.player1.paddleReset(this.paddleStartPos)
+    this.player2.paddleReset(this.paddleStartPos)
+
   }
 
   else if (this.isPaused == 1){
@@ -109,6 +115,7 @@ render(dt) {
   this.player2.render(svg, this.pauseMenu.pausedM);
   this.scoreBoard.render(svg, this.ball.scorePlayer1, this.ball.scorePlayer2, this.pauseMenu.paused);
   this.ball.render(svg, this.player1, this.player2,);
+  this.pauseMenu.pauseMenuPosReset()
   if (gameState.winState == 1) {
     this.pauseMenu.paused *= -1;
   };
@@ -130,6 +137,8 @@ render(dt) {
     else if (gameState.winState == 1) {
 
       this.scoreBoard.renderWin(svg);
+      this.player1.paddleReset(this.paddleStartPos)
+      this.player2.paddleReset(this.paddleStartPos)
 
       const winEvent = () => {
         if (event.key == "Enter"){
@@ -152,12 +161,12 @@ export const gameState = {
   paused: 1,
   serve: 0,
   winState: 0,
-  menu: 0,
+  menu: 1,
 };
 
 export const menu = {
   pauseMenuPosition: 0,
   pauseMenuDepth: 0,
   mainMenuPosition: 2,
-  pauseMenuDepth: 0,
+  mainMenuDepth: 0,
 };

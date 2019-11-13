@@ -38,31 +38,15 @@ export default class Paddles {
 
         document.addEventListener("keydown", keyDownPressed);
         document.addEventListener("keyup", keyUpPressed);
-
-        // document.addEventListener("keydown", event => {
-        //     this.keyStrokes[event.key] = true;
-        //         if (this.keyStrokes[] == up) {
-                    
-        //             this.y = Math.max(this.y - Variables.paddleSpeed, 0);
-        //         }
-        //         else if (this.keyStrokes[i] == down) {
-        //             this.y = Math.min(this.y + Variables.paddleSpeed, this.boardHeight - this.height); 
-        //         }
-
-        // });
-        // document.addEventListener("keyUp", event => {
-        //     this.keyDown = false
-                
-        // });
     }
     
-    paddleReset() {
+    paddleReset(y) {
         console.log(`addpaddlereset`)
+        this.y = y
     }
 
     render(svg, paused) {
         this.paused = paused
-        this.paddleReset()
 
         if (this.paused == 1 && this.keyUP) {
             this.y = Math.max(this.y - Variables.paddleSpeed, 0);

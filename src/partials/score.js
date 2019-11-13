@@ -65,6 +65,7 @@ export default class Score {
         score.setAttributeNS(null, 'width', this.width);
         score.setAttributeNS(null, 'height', this.height);
         score.setAttributeNS(null, 'fill', 'black');
+        score.setAttributeNS(null, "id", 'scoreBox');
         score.setAttributeNS(null, 'border', '1px solid black');
         svg.appendChild(score);
 
@@ -99,7 +100,7 @@ export default class Score {
             pressAnyKey.setAttributeNS(null, "x", this.x * .55);
             pressAnyKey.setAttributeNS(null, "y", this.y + 140);
             pressAnyKey.setAttributeNS(null, "fill", 'red');
-            pressAnyKey.innerHTML = `press any key to continue`
+            pressAnyKey.innerHTML = `press enter key to continue`
             svg.appendChild(pressAnyKey);
 
     }

@@ -43,9 +43,21 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 3.0 
+
+    menu.js
+        -main menu fully functional
+
+    Bug Fixes:
+        -paddle collision fixed
+        -paddles now reset when you start a new game
+        -menu now navigates as intended
+        -some basic code clean-up
+
 ## Beta 2.2 
 
-    Got half way to getting the start menu finished and switched some of my values over to an object in game to make it easier to change and refer to those values
+    Note:
+        -Got half way to getting the start menu finished and switched some of my values over to an object in game to make it easier to change and refer to those values
 
 ## Beta 2.1
 
@@ -53,25 +65,27 @@ Now check out your deployed site 🙂
         -win screen is now working. 
             -still need to stop the win screen from directing to the pause menu
 
-## Beta 2
+## Beta 2.0
 
     Menu.js
-        fixed the pause menu issue. works like a dream now.
+        -fixed the pause menu issue. works like a dream now.
 
     paddle.js
-        applied the same concept to fix the paddle movement in menu bug
+        -applied the same concept to fix the paddle movement in menu bug
 
     Note:
-        I dreamed about the pausemenu problem all night... and then, INSPIRATION! the answer was staring me in the face the whole time. of course I check the value of paused IN the event handler so it checks every time a key is pressed...... I cant believe that took me like 4 hours at least of googling, and troubleshooting.. I deserve a treat, greasy diner breakfast here i come!
+        -I dreamed about the pausemenu problem all night... and then, INSPIRATION! the answer was staring me in the face the whole time. of course I check the value of paused IN the -event handler so it checks every time a key is pressed...... I cant believe that took me like 4 hours at least of googling, and troubleshooting.. I deserve a treat, greasy -diner breakfast here i come!
 
 ## Beta 1.16
 
-    Restart function in pause menu is now fully functional!
+    Menu.js
+        -Restart function in pause menu is now fully functional!
 
 ## Beta 1.15
 
-    Made both paddles able to move smoothly and independantly of each other. 
-        -took a while, spent a long time trying to get keypress to work over seperate key up and down checks but at the end of the day this works... 
+    paddles.js
+        -Made both paddles able to move smoothly and independantly of each other. 
+            -took a while, spent a long time trying to get keypress to work over seperate key up and down checks but at the end of the day this works... 
 
 ## Beta 1.14
 
@@ -80,17 +94,18 @@ Now check out your deployed site 🙂
         -haven't been able to figure out how to call the reset function in my Game class in a method within my menu class.. basically to reset the game when the option is selected in the menu  
 
 ## Beta 1.13
-
-    Finally found a solution to the pause menu issue. But it seems to have significant latency lag, may need to be more specific when calling event.
+    menu.js
+        -Finally found a solution to the pause menu issue. But it seems to have significant latency lag, may need to be more specific when calling event.
 
 ## Beta 1.12
-
-    added code to track menu selection but having a hard time getting an updated value from my game class to apply to my pause class
+    menu.js
+        -added code to track menu selection but having a hard time getting an updated value from my game class to apply to my pause class
 
 ## Beta 1.1
     
-    Adds a pause menu an options to select.
-    need to add pause menu functionality
+    menu.js
+        -Adds a pause menu an options to select.
+        -need to add pause menu functionality
 
 ## Beta 1.0
 

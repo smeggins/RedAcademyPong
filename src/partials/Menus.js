@@ -13,15 +13,22 @@ export default class PauseMenu  {
 
         PauseMenu.prototype.pause = () => {
             document.addEventListener("keydown", event => {
-              if (event.key == 'p' && this.paused != -1) {
+              if (event.key == 'p' && this.paused != -1 && gameState.menu == 0) {
+                  console.log(`pause was accessed. initial state: ${this.paused}`)
                 this.paused *= -1;
+                console.log(`after change ${this.paused}`)
               }
             })
           }
 
     }
 
+    pauseMenuPosReset() {
+        if (this.pausedM == 1) {
+            this.pauseMenuPosition = 4;
+        }
 
+    }
 
     get pausedM() {
         return this.paused;
@@ -37,16 +44,18 @@ export default class PauseMenu  {
                         if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuPosition <= 3) {
                         this.pauseMenuPosition += 1;
                         }
-                        else if(gameState.menu == 0 && menu.mainMenuPositio <= 1) {
-                            menu.mainMenuPosition += 1
+                        else if(gameState.menu == 1 && menu.mainMenuPosition <= 1) {
+                            menu.mainMenuPosition += 1;
+                            console.log(`menu up in main menu`)
                         }
                         break;
                     case down:
                         if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuPosition >= 2) {
                         this.pauseMenuPosition -= 1;
                         }
-                        else if(gameState.menu == 0 && menu.mainMenuPositio >= 2) {
-                            menu.mainMenuPosition -= 1
+                        else if(gameState.menu == 1 && menu.mainMenuPosition >= 2) {
+                            menu.mainMenuPosition -= 1;
+                            console.log(`menu down in main menu`)
                         }
                         break;
                     case enter:
@@ -62,7 +71,13 @@ export default class PauseMenu  {
                             }
                         else if (this.pausedM == -1 && gameState.winState == 0 && this.pauseMenuDepth == 0 && this.pauseMenuPosition == 1) {
                             console.log('exited to main')
+                            gameState.menu = 1;
+                            this.paused *= -1
+                            Game.prototype.reset();
                             }        
+                        else if (gameState.menu == 1 && menu.mainMenuPosition == 2) {
+                            gameState.menu = 0;
+                        }
                             break;
                 };
             });
@@ -171,29 +186,66 @@ export default class PauseMenu  {
     mainMenuRender(svg, width, height) {
 
         let pongMenuText = document.createElementNS(SVG_NS, "text");
-        pongMenuText.setAttributeNS(null, "x", width / 2);
-        pongMenuText.setAttributeNS(null, "y", height * .25);
-        pongMenuText.setAttributeNS(null, "fill", 'red');
+        pongMenuText.setAttributeNS(null, "x", width / 2 * .55);
+        pongMenuText.setAttributeNS(null, "y", height * .4);
+        pongMenuText.setAttributeNS(null, "fill", '#11cd2f');
         pongMenuText.setAttributeNS(null, "id", 'pongMenuText');
         pongMenuText.innerHTML = `Pong`
         svg.appendChild(pongMenuText);
 
         let vsMenuText = document.createElementNS(SVG_NS, "text");
-        vsMenuText.setAttributeNS(null, "x", width / 2);
-        vsMenuText.setAttributeNS(null, "y", height /2);
-        vsMenuText.setAttributeNS(null, "fill", 'red');
-        vsMenuText.setAttributeNS(null, "id", 'vsMenuText');
+        vsMenuText.setAttributeNS(null, "x", width / 2 * .85);
+        vsMenuText.setAttributeNS(null, "y", height *.6);
+        vsMenuText.setAttributeNS(null, "fill", '#11cd2f');
+        vsMenuText.setAttributeNS(null, "class", 'vsMenuText');
         vsMenuText.innerHTML = `play`
         svg.appendChild(vsMenuText);
 
-        let paddle = document.createElementNS(SVG_NS, "rect");
-        paddle.setAttributeNS(null, 'x', width / 2 );
-        paddle.setAttributeNS(null, 'y', height / 2);
-        paddle.setAttributeNS(null, 'width', 5);
-        paddle.setAttributeNS(null, 'height', 20);
-        paddle.setAttributeNS(null, 'fill', 'black');
-        svg.appendChild(paddle);
+        let vsMenuText2 = document.createElementNS(SVG_NS, "text");
+        vsMenuText2.setAttributeNS(null, "x", width / 2 * .78);
+        vsMenuText2.setAttributeNS(null, "y", height *.75);
+        vsMenuText2.setAttributeNS(null, "fill", '#11cd2f');
+        vsMenuText2.setAttributeNS(null, "class", 'vsMenuText');
+        vsMenuText2.innerHTML = `options`
+        svg.appendChild(vsMenuText2);
 
+        if(menu.mainMenuPosition == 2) {
+
+            let paddleSelectorL = document.createElementNS(SVG_NS, "rect");
+            paddleSelectorL.setAttributeNS(null, 'x', width *.4);
+            paddleSelectorL.setAttributeNS(null, 'y', height *.535);
+            paddleSelectorL.setAttributeNS(null, 'width', 5);
+            paddleSelectorL.setAttributeNS(null, 'height', 20);
+            paddleSelectorL.setAttributeNS(null, 'fill', 'black');
+            svg.appendChild(paddleSelectorL);
+
+            let paddleSelectorR = document.createElementNS(SVG_NS, "rect");
+            paddleSelectorR.setAttributeNS(null, 'x', width *.58);
+            paddleSelectorR.setAttributeNS(null, 'y', height *.535);
+            paddleSelectorR.setAttributeNS(null, 'width', 5);
+            paddleSelectorR.setAttributeNS(null, 'height', 20);
+            paddleSelectorR.setAttributeNS(null, 'fill', 'black');
+            svg.appendChild(paddleSelectorR);
+        }
+
+        else if(menu.mainMenuPosition == 1) {
+
+            let paddleSelector2L = document.createElementNS(SVG_NS, "rect");
+            paddleSelector2L.setAttributeNS(null, 'x', width *.37);
+            paddleSelector2L.setAttributeNS(null, 'y', height *.68);
+            paddleSelector2L.setAttributeNS(null, 'width', 5);
+            paddleSelector2L.setAttributeNS(null, 'height', 20);
+            paddleSelector2L.setAttributeNS(null, 'fill', 'black');
+            svg.appendChild(paddleSelector2L);
+
+            let paddleSelector2R = document.createElementNS(SVG_NS, "rect");
+            paddleSelector2R.setAttributeNS(null, 'x', width *.63);
+            paddleSelector2R.setAttributeNS(null, 'y', height *.68);
+            paddleSelector2R.setAttributeNS(null, 'width', 5);
+            paddleSelector2R.setAttributeNS(null, 'height', 20);
+            paddleSelector2R.setAttributeNS(null, 'fill', 'black');
+            svg.appendChild(paddleSelector2R);
+        }
         
     }
 };
