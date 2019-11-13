@@ -1,6 +1,7 @@
 import { SVG_NS } from "../settings"
 import { Variables } from "../settings"
 import { constants } from "../settings"
+import { gameState } from './Game';
 
 export default class Ball {
     constructor (radius, boardWidth, boardHeight) {
@@ -21,6 +22,10 @@ export default class Ball {
             // this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
             this.vy = Math.floor(Math.random() * (this.ballSpeedHigh - this.ballSpeedLow) + this.ballSpeedLow);
             this.vx = this.direction * (((this.ballSpeedHigh - Math.abs(this.vy)) + 2) * constants.ballSpeed[3]);
+
+            gameState.ballDirection = 1
+            this.ballDirectionStateR = ''
+            this.ballDirectionStateL = ''
     
             console.log('reset pressed')
         }
@@ -59,13 +64,32 @@ export default class Ball {
         this.p2BottomY = player2.y + player2.height;
         this.p1BottomY = player1.y + player1.height;
         this.p1PaddleX = player1.x + player1.width;
+        this.p2PaddleX = player2.x + player2.width;
+        this.ballDirectionStateR;
+        this.ballDirectionStateL;
 
-        if (this.rightDetect >= player2.x && (this.y || this.topDetect || this.bottomDetect) >= player2.y && (this.y || this.bottomDetect || this.topDetect) <= this.p2BottomY ){
-            this.vx *= -1;
+        if (this.rightDetect >= player2.x && this.y >= player2.y && this.y <= this.p2BottomY ){
+            if (gameState.ballDirection != this.ballDirectionStateR){
+                this.vx *= -1;
+                gameState.ballDirection *= -1;
+                this.ballDirectionStateR = gameState.ballDirection
+            }
         }
 
-        else if (this.leftDetect <= this.p1PaddleX && (this.y || this.topDetect || this.bottomDetect) >= player1.y && (this.y || this.bottomDetect || this.topDetect) <= this.p1BottomY ){
+        else if (this.leftDetect <= this.p1PaddleX && this.y >= player1.y && this.y <= this.p1BottomY ){
+            if (gameState.ballDirection != this.ballDirectionStateL){
+                this.vx *= -1;
+                gameState.ballDirection *= -1;
+                this.ballDirectionStateL = gameState.ballDirection
+            }
+        }
+        else if (this.bottomDetect >= (player1.y || player2.y) && this.bottomDetect <= (this.p1BottomY || this.p2BottomY) && this.x >= (player1.x || this.p2PaddleX) && this.x <= (this.p1PaddleX || player2.x)) {
             this.vx *= -1;
+            this.vy *= -1;
+        }
+        else if (this.topDetect >= (player1.y || player2.y) && this.topDetect <= (this.p1BottomY || this.p2BottomY) && this.x >= (player1.x || this.p2PaddleX) && this.x <= (this.p1PaddleX || player2.x)) {
+            this.vx *= -1;
+            this.vy *= -1;
         }
     }
 

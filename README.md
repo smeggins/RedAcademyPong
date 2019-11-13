@@ -43,6 +43,12 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 3.1
+
+    ball.js
+        -added top and bottom paddle collision
+        -fixed a bug that was causeing the ball to get 'stuck' inside the paddle
+
 ## Beta 3.0 
 
     menu.js

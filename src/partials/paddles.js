@@ -41,7 +41,6 @@ export default class Paddles {
     }
     
     paddleReset(y) {
-        console.log(`addpaddlereset`)
         this.y = y
     }
 

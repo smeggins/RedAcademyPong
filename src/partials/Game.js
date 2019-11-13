@@ -162,6 +162,7 @@ export const gameState = {
   serve: 0,
   winState: 0,
   menu: 1,
+  ballDirection: 1,
 };
 
 export const menu = {
