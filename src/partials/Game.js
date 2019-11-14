@@ -98,7 +98,6 @@ render(dt) {
     this.pauseMenu.pauseMenuPosReset()
     this.player1.paddleReset(this.paddleStartPos)
     this.player2.paddleReset(this.paddleStartPos)
-
   }
 
   else if (this.isPaused == 1){
@@ -158,8 +157,6 @@ render(dt) {
 };
 
 export const gameState = {
-  paused: 1,
-  serve: 0,
   winState: 0,
   menu: 1,
   ballDirection: 1,
@@ -169,5 +166,6 @@ export const menu = {
   pauseMenuPosition: 0,
   pauseMenuDepth: 0,
   mainMenuPosition: 2,
+  mainMenuOptionsPos: 5,
   mainMenuDepth: 0,
 };

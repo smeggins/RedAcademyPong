@@ -9,7 +9,6 @@ export default class Board {
         this.netDensity = height * .06
     }
 
-    
     render(svg) {
         
 				// <rect width="512" height="256" fill="#353535" stroke="black" stroke-width="5" />

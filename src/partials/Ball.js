@@ -2,6 +2,7 @@ import { SVG_NS } from "../settings"
 import { Variables } from "../settings"
 import { constants } from "../settings"
 import { gameState } from './Game';
+import pingSound from "../../public/sounds/pong-01.wav";
 
 export default class Ball {
     constructor (radius, boardWidth, boardHeight) {
@@ -12,6 +13,8 @@ export default class Ball {
         this.scorePlayer1 = 0;
         this.scorePlayer2 = 0;
         this.serve = 0;
+        this.ping = new Audio(pingSound);
+
 
         Ball.prototype.reset = () => {
             this.x = (this.boardWidth / 2) + (this.radius/2);
@@ -44,9 +47,11 @@ export default class Ball {
 
         if (this.topDetect <= 0) {
             this.vy *= -1;
+            this.ping.play();
         }
         else if (this.bottomDetect >= this.boardHeight) {
             this.vy *= -1
+            this.ping.play();
         }
         else if (this.leftDetect <= 0) {
             this.vx *= -1,
@@ -71,6 +76,7 @@ export default class Ball {
         if (this.rightDetect >= player2.x && this.y >= player2.y && this.y <= this.p2BottomY ){
             if (gameState.ballDirection != this.ballDirectionStateR){
                 this.vx *= -1;
+                this.ping.play();
                 gameState.ballDirection *= -1;
                 this.ballDirectionStateR = gameState.ballDirection
             }
@@ -79,6 +85,7 @@ export default class Ball {
         else if (this.leftDetect <= this.p1PaddleX && this.y >= player1.y && this.y <= this.p1BottomY ){
             if (gameState.ballDirection != this.ballDirectionStateL){
                 this.vx *= -1;
+                this.ping.play();
                 gameState.ballDirection *= -1;
                 this.ballDirectionStateL = gameState.ballDirection
             }
@@ -86,10 +93,12 @@ export default class Ball {
         else if (this.bottomDetect >= (player1.y || player2.y) && this.bottomDetect <= (this.p1BottomY || this.p2BottomY) && this.x >= (player1.x || this.p2PaddleX) && this.x <= (this.p1PaddleX || player2.x)) {
             this.vx *= -1;
             this.vy *= -1;
+            this.ping.play();
         }
         else if (this.topDetect >= (player1.y || player2.y) && this.topDetect <= (this.p1BottomY || this.p2BottomY) && this.x >= (player1.x || this.p2PaddleX) && this.x <= (this.p1PaddleX || player2.x)) {
             this.vx *= -1;
             this.vy *= -1;
+            this.ping.play();
         }
     }
 

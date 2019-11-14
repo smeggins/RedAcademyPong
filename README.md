@@ -43,6 +43,12 @@ Now check out your deployed site 🙂
 
 # VERSION HISTORY
 
+## Beta 4
+
+    menu.js
+        added a controls section to the main menu
+        removed options from main and pause menu
+
 ## Beta 3.1
 
     ball.js
