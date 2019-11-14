@@ -1,47 +1,50 @@
-# Pong Game Starter
+# PONG
 
-A starter project for a basic pong game using SVGs.
+Pong is the classic arcade game that some say kicked off the entire gaming industry. This is my simple competitive version with a focus more on functional polish and code than special features or additional game mechanics.
 
-## Setup
+## Technologies Used
 
-Ensure you have [Node.js](https://nodejs.org/en/) installed first.
+HTML, CSS, JavaScript, NPM, NODE
 
-**Install dependencies:**
+### Personal Learnings
 
-`$ npm install`
+A deep foundational understanding of javascript is what I get as my reward for completing this project.
+At times it was tough as I had to (for the most part) figure out how to code pong using the slides and google. I was on vacation while everyone
+else was coding the entirety of the game along with the instructor.
+I firmly believe that this was beneficial to me, as it forced me to learn, through many hours of trial and error, what javascript can and cannot do.
+Therefore, I am confident walking away from this project that I could, given enough time and internet connection, code whatever is required of me using the javascript language.
 
-**Run locally with the Parcel dev server:**
+### Installing
 
-`$ npm start`
+Simply visit https://smeggins.github.io/RedAcademyPong/ and press enter to begin
 
-Once you run the start command you can access your project at http://localhost:3000.
+## Built With
 
-Read more about the [Parcel web application bundler here](https://parceljs.org/).
+* Javascript
+* HTML
+* CSS
+* NODE
+* NPM
 
-## Deploy
+## Authors
 
-The deployment workflow for this project will be a bit different from what you've used when deploying simple static websites.
+* **Phillip (Smeggins) Chadwick** - Main Author, Primary Programmer
 
-To deploy your finished Pong project as a GitHub page, you must first **update the `predeploy` script in the `package.json` file with the name of your repo.**
+## License
 
-For example, if your repo URL is:
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-https://github.com/bob/pong-project
+## Acknowledgments
 
-Update the `predeploy` script as follows:
-
-```json
-"predeploy": "rm -rf dist && parcel build index.html --public-url /pong-project",
-```
-
-Once you have done this, you can run:
-
-`$ npm run deploy`
-
-Now check out your deployed site 🙂
-
+* Red Academy
+* My Fellow Students
+* My instructor Anvit
 
 # VERSION HISTORY
+
+## 1.0
+
+    Cleaned up code and updated package.json to prepare the game for final deployment
 
 ## Beta 4
 
@@ -53,7 +56,7 @@ Now check out your deployed site 🙂
 
     ball.js
         -added top and bottom paddle collision
-        -fixed a bug that was causeing the ball to get 'stuck' inside the paddle
+        -fixed a bug that was causing the ball to get 'stuck' inside the paddle
 
 ## Beta 3.0 
 
@@ -96,8 +99,8 @@ Now check out your deployed site 🙂
 ## Beta 1.15
 
     paddles.js
-        -Made both paddles able to move smoothly and independantly of each other. 
-            -took a while, spent a long time trying to get keypress to work over seperate key up and down checks but at the end of the day this works... 
+        -Made both paddles able to move smoothly and independently of each other. 
+            -took a while, spent a long time trying to get keypress to work over separate key up and down checks but at the end of the day this works... 
 
 ## Beta 1.14
 
@@ -121,112 +124,28 @@ Now check out your deployed site 🙂
 
 ## Beta 1.0
 
-    BUGS:
-        *ball collision is off on right paddle.
-        *Ball can get stuck IN the paddle if it hits from the top (ie add top and bottom paddle collision)
-        *Ball can have too verticle a trajectory
-        *Ball can end up in paddle if you move the paddle in the same direction the ball is coming when they are parallel
-
-    Priorities:
-        **AUDIO AS PER THE PROJECT GUIDLINE**
-        1.Game is scaleable
-        2.paddles can be controlled simultaniously
-        3.menus
-        4.Win condition
-        5.
-
     Goals:
-        Front-End
             Menus:
                 *Start menu
                     -start 
-                        -number of goals to victory
-                        -check-box for tutorial
-                    -exit
-                    -options
+                    -controls
                 
                 *Pause menu
                     -resume
                     -exit to title
-                    -options
-                    -resart match
-                        
-                        *Options menu
-                            -difficulty (when AI implemented)
-                            -sound volume
-                            -game speed
-                            -number of goals to victory
-                            -paddle color selection
-                            -ball color selection
-                            -screen size
+                    -restart match
             
             Visuals
-                *different paddle colors for each player
-                *different ball colors
                 *Game window border
                 *dedicated score area
-                */* perhaps glass wall on each side that cracks as ball hits then falls along with paddle when 
-                    a player wins...
 
-        Back-End:
-
-            Debug mode:
-                *display in top left of screen
-                    -paddle positions
-                    -ball position
-                    -ball speed
-                    -viewport size
-                    -keys depressed
             
-            *Game size Scaleable
             *code clean-up
             *add audio
             *set number of points required for a win
-            *add a goal screen/animation
+            *add a goal screen
             *add a win screen (with play again option)
-            *add a launch button to start ball moving from start position.
-            *add ability to press buttons and have paddle move simultaniously for player 1 and 2
-            *impliment DT
-
-        
-
-       
-       
-       
-       
-       
-       
-        Main game pivot:
-            Note:
-                
-                **this is VERY unlikley to be completed over the long weekend, the focus will be on a polished multiplayer experience first as is required by the project outline**
-
-                *Time permitting i'd like the game to be a single player pong clone with an ai paddle on the other side with breakable blocks in-between...
-                *you would play up-down during regular play and left right during multiplayer...
-                * there would be certain blocks that have items in them and certain 'glowing' blocks that would gradually dim. if you break the block while its glowing you get a powerful power up. if the block goes out it becomes a single hit block...
-                *with each level more blocks would stand between you and the enemy paddle and some blocks would take more hits to break...
-                *some blocks are unbreakable and are used to create special level designs.
-                *there should be a currency from breaking gold blocks that you can use in a store menu to buy upgrades for your paddle...
-                *when the ball hits your area you lose your upgrades, otherwise you keep them from level to level...
-
-
-
-            *add AI option / difficulties
-            *add complex vector calculations to allow for "aiming" based on where the ball hits your paddle.
-                -ideas on this would be to set a vy instead of randomizing it and increasing (or decreasing) that vy by 1 the further left or right you are from center on the paddle
-            *add block-break function
-                -blocks containing items
-                -blocks that take more than 1 hit
-                -unbreakable blocks
-                -glowing 'super' blocks
-
-            *add store
-            *add abilities
-            *add levels
-            *add save feature (either to record progress of a game or to save high score)
-
-
-
+            *add ability to press buttons and have paddle move simultaneously for player 1 and 2
 
 ## alpha 12
 
@@ -246,7 +165,7 @@ Now check out your deployed site 🙂
     Note: skipped a couple git pushes on this readme due to time constraints while coding on the plane...
 
     Problem:
-        *css won't apply to my score <p> element even though it is properlly generated and identified...
+        *css won't apply to my score <p> element even though it is properly generated and identified...
 
     Score.js:
         *added the basic skeleton for the score.js...
@@ -273,7 +192,7 @@ Now check out your deployed site 🙂
 ## alpha 7:
 
     problems:
-        *didnt have time before i left class to finsish troubleshooting my pause function...
+        *didnt have time before i left class to finish troubleshooting my pause function...
 
     Game.js
         *started working on the pause functuon...
@@ -281,16 +200,16 @@ Now check out your deployed site 🙂
 ## alpha 6:
 
     Ball.js
-        *... i was over thinking it. re-read the slides and realised i only needed to multiply my vars by -1...
+        *... i was over thinking it. re-read the slides and realized i only needed to multiply my vars by -1...
         *adds bounce on all 4 sides...
-        *renamed collison method to fit with what the project slides wanted me to name it...
+        *renamed collision method to fit with what the project slides wanted me to name it...
 
 ## alpha 5:
     
     Problem:
         *I cant get the horizontal bounce to work for some reason. been at it for a while so it's time for another git push regardless. Want to figure this out before school tonight...
     Ball.js
-        *added movement and verticle bounce to ball...
+        *added movement and vertical bounce to ball...
 
 ## alpha 4:
     
@@ -326,8 +245,8 @@ Now check out your deployed site 🙂
         *Removed some of the element references from my original "canvas" pong project...
                 
     Board.js:
-        *added version history to readme so I'm not adding version noaazazazazazaztes to my git upload anymore...
-        *realised I didnt add rect as my render argument in board so i fixed that...
+        *added version history to readme so I'm not adding version to my git upload anymore...
+        *realized I didnt add rect as my render argument in board so i fixed that...
         *when setting my rect width and height attributes I forgot to change the selected element to rect from svg after copying those line over from my... game.js...
         *added append child to the bottom of my rect element so I will amend my svg element with a rect child element...
 

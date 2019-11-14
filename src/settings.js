@@ -20,7 +20,7 @@ export const constants = {
     ballSpeedRatioHigh: .012,
     ballSpeedRatioLow: .002,
     screenValue: screenSettings.gameWidth * screenSettings.gameHeight,
-    ballSpeed: [.4, .5, .6, .7, .8, .9, 1]
+    ballSpeed: [.4, .5, .6, .7, .8, .9, 1],
 };
 
 export const Variables = {
@@ -29,23 +29,25 @@ export const Variables = {
     paddleSpeed: (screenSettings.gameWidth * screenSettings.gameHeight) * constants.speedRatio,
     ballSpeedHigh: screenSettings.gameWidth * constants.ballSpeedRatioHigh, 
     ballSpeedLow: screenSettings.gameWidth * constants.ballSpeedRatioLow, 
-    scoreToWin: 2,
+    scoreToWin: 5,
 };
 
 export const svgFunction = {
 
     svgText(svg, x, y, color, idclass, id, text) {
-        var word = document.createElementNS(SVG_NS, "text");
+
+        let word = document.createElementNS(SVG_NS, "text");
         word.setAttributeNS(null, "x", x);
         word.setAttributeNS(null, "y", y);
         word.setAttributeNS(null, "fill", color);
         word.setAttributeNS(null, idclass, id);
-        word.innerHTML = text
+        word.innerHTML = text;
         svg.appendChild(word);
         return word;
     },
 
     svgRect(svg, x, y, width, height, color) {
+
         let rect = document.createElementNS(SVG_NS, "rect");
         rect.setAttributeNS(null, "x", x);
         rect.setAttributeNS(null, "y", y);
@@ -53,6 +55,6 @@ export const svgFunction = {
         rect.setAttributeNS(null, 'height', height);
         rect.setAttributeNS(null, "fill", color);
         svg.appendChild(rect);
-        return rect
+        return rect;
     },
 };

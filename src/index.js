@@ -7,11 +7,8 @@ const gameHeight = screenSettings.gameHeight;
 
 const game = new Game('game', gameWidth, gameHeight);
 
-let lastTime = 0;
 
 (function gameLoop(timeStamp) {
-  let dt = timeStamp - lastTime;
-  lastTime = timeStamp;
   game.render();
   requestAnimationFrame(gameLoop);
 })();
